@@ -135,21 +135,13 @@
   .head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;border-bottom:1px solid var(--rule);padding-bottom:20px;margin-bottom:34px}
   .head h2{margin:0;font-size:24px;letter-spacing:-.02em;font-weight:600}
   .head span{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey)}
-  .bandhead{border-bottom:1px solid #2A2824;padding-bottom:22px}
-  .bandnote{margin-top:14px;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#7C766B}
-  .bandhead h2{margin:12px 0 0;font-size:clamp(26px,3.4vw,42px);line-height:1.05;letter-spacing:-.03em;font-weight:600;max-width:560px}
-  .bandhead h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--red)}
-  .compare{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2A2824;margin-top:40px}
-  .col{background:var(--ink);padding:28px 30px 24px}
-  .coltag{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#8C8579;margin-bottom:18px}
-  .col ul{margin:0;padding:0;list-style:none}
-  .col li{font-size:13.5px;line-height:1.5;color:#A9A396;padding:11px 0 11px 24px;border-bottom:1px solid #232120;position:relative}
-  .col li:last-child{border-bottom:0}
-  .col li::before{content:"";position:absolute;left:0;top:17px;width:10px;height:1px;background:#4A463F}
-  .col.after li{color:#F3EFE6}
-  .col.after li::before{background:var(--red);height:2px;top:16px}
-  .colfoot{margin-top:20px;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#7C766B}
-  .col.after .colfoot{color:#F3EFE6}
+.band{background:var(--ink);color:#F3EFE6}
+  .band .in{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#2A2824}
+  .band .in div{background:var(--ink);padding:32px 28px 36px}
+  .n{font-size:42px;font-weight:600;letter-spacing:-.04em;line-height:1}
+  .n em{font-family:var(--serif);font-style:italic;color:var(--red)}
+  .nl{margin-top:9px;font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#8C8579;line-height:1.55}
+  .nl b{color:#F3EFE6;font-weight:600}
   #walk{background:var(--paper);padding:96px 0 0;border-top:1px solid var(--rule)}
   .walkgrid{display:grid;grid-template-columns:.92fr 1.08fr;gap:64px;align-items:center;min-height:520px}
   .walktxt .step{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
@@ -184,8 +176,7 @@
     .pricing{grid-template-columns:1fr;gap:24px}
     .quote{grid-template-columns:1fr;gap:24px}
     .faq .q{grid-template-columns:1fr;gap:8px}
-    .compare{grid-template-columns:1fr}
-    .bandhead{grid-template-columns:1fr}
+    .band .in{grid-template-columns:repeat(2,1fr)}
   }
 </style>
 </head>
@@ -216,39 +207,12 @@
 </div>
 
 <div class="band">
-  <div class="wrap">
-    <div class="bandhead">
-      <div>
-        <div class="kicker" style="color:#8C8579">The same week, two ways</div>
-        <h2>Six hours of paperwork, <em>or none.</em></h2>
-        <div class="bandnote">Measured with the instructor in Enderis 130</div>
-      </div>
-    </div>
-    <div class="compare">
-      <div class="col before">
-        <div class="coltag">Without a record</div>
-        <ul>
-          <li>Rebuild the week plan from last semester's file</li>
-          <li>Drive to the store without knowing what is on the shelf</li>
-          <li>Print a temperature sheet, sign it, file it</li>
-          <li>Grade thirty notebooks on paper, by hand</li>
-          <li>Walk a new TA through the kitchen, again</li>
-        </ul>
-        <div class="colfoot">Six hours a week, every semester</div>
-      </div>
-      <div class="col after">
-        <div class="coltag">With Proof</div>
-        <ul>
-          <li>The week is planned, with its prep and station sheets</li>
-          <li>The list crosses out what the pantry covers</li>
-          <li>A temperature out of range demands a corrective action</li>
-          <li>Grading is five criteria; the semester exports as one document</li>
-          <li>The new TA watched fifteen chapters before the first shift</li>
-        </ul>
-        <div class="colfoot">The same week, on the record</div>
-      </div>
-    </div>
-  </div>
+  <div class="wrap"><div class="in">
+    <div><div class="n">6<em>&nbsp;h</em></div><div class="nl"><b>Hours a week back</b><br>to the instructor</div></div>
+    <div><div class="n">15</div><div class="nl"><b>Chapters of TA training</b><br>watched without you</div></div>
+    <div><div class="n">158</div><div class="nl"><b>Ounces, from two bags</b><br>the pantry does the math</div></div>
+    <div><div class="n"><em>0</em></div><div class="nl"><b>Things bought twice</b><br>the list checks the shelf</div></div>
+  </div></div>
 </div>
 
 <div class="inside" id="system">
