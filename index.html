@@ -64,14 +64,6 @@
   .shot{position:relative;background:#141310 url('img/hero.jpg') center 30%/cover no-repeat;min-height:560px}
   .shot::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,12,.12),rgba(14,14,12,.5))}
   .shot .cap{position:absolute;left:26px;bottom:22px;z-index:2;color:#F3EFE6;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
-  /* band: before/after */
-  .band{background:var(--ink);color:#F3EFE6}
-  .band .in{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#2A2824}
-  .band .in div{background:var(--ink);padding:32px 28px 36px}
-  .n{font-size:44px;font-weight:600;letter-spacing:-.04em;line-height:1}
-  .n em{font-family:var(--serif);font-style:italic;color:var(--red)}
-  .nl{margin-top:9px;font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#9C978D;line-height:1.5}
-  .nl b{color:#F3EFE6;font-weight:600}
   /* product mockups */
   .inside{background:var(--ink);color:#F3EFE6;padding:96px 0 84px;overflow:hidden}
   .inside-head{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;border-bottom:1px solid #2A2824;padding-bottom:22px}
@@ -135,13 +127,14 @@
   .head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;border-bottom:1px solid var(--rule);padding-bottom:20px;margin-bottom:34px}
   .head h2{margin:0;font-size:24px;letter-spacing:-.02em;font-weight:600}
   .head span{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey)}
-.band{background:var(--ink);color:#F3EFE6}
+  /* band: four facts, stacked value + label */
+  .band{background:var(--ink);color:#F3EFE6}
   .band .in{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#2A2824}
-  .band .in div{background:var(--ink);padding:32px 28px 36px}
-  .n{font-size:42px;font-weight:600;letter-spacing:-.04em;line-height:1}
-  .n em{font-family:var(--serif);font-style:italic;color:var(--red)}
-  .nl{margin-top:9px;font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#8C8579;line-height:1.55}
-  .nl b{color:#F3EFE6;font-weight:600}
+  .band .cell{background:var(--ink);padding:38px 34px 42px}
+  .band .val{font-size:46px;font-weight:600;letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums;display:flex;align-items:baseline;gap:2px}
+  .band .val em{font-family:var(--serif);font-style:italic;color:var(--red);font-size:.72em;letter-spacing:0}
+  .band .lab{margin-top:14px;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#8C8579;line-height:1.7;max-width:190px}
+  .band .lab b{display:block;color:#F3EFE6;font-weight:600;letter-spacing:.14em}
   #walk{background:var(--paper);padding:96px 0 0;border-top:1px solid var(--rule)}
   .walkgrid{display:grid;grid-template-columns:.92fr 1.08fr;gap:64px;align-items:center;min-height:520px}
   .walktxt .step{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
@@ -177,6 +170,9 @@
     .quote{grid-template-columns:1fr;gap:24px}
     .faq .q{grid-template-columns:1fr;gap:8px}
     .band .in{grid-template-columns:repeat(2,1fr)}
+    .band .cell{padding:28px 22px 32px}
+    .band .val{font-size:36px}
+    .band .lab{max-width:none}
   }
 </style>
 </head>
@@ -208,10 +204,10 @@
 
 <div class="band">
   <div class="wrap"><div class="in">
-    <div><div class="n">6<em>&nbsp;h</em></div><div class="nl"><b>Hours a week back</b><br>to the instructor</div></div>
-    <div><div class="n">15</div><div class="nl"><b>Chapters of TA training</b><br>watched without you</div></div>
-    <div><div class="n">158</div><div class="nl"><b>Ounces, from two bags</b><br>the pantry does the math</div></div>
-    <div><div class="n"><em>0</em></div><div class="nl"><b>Things bought twice</b><br>the list checks the shelf</div></div>
+    <div class="cell"><div class="val">6<em>h</em></div><div class="lab"><b>Hours back</b>every week, to the instructor</div></div>
+    <div class="cell"><div class="val">15</div><div class="lab"><b>Chapters</b>watched before the first shift</div></div>
+    <div class="cell"><div class="val">158</div><div class="lab"><b>Ounces</b>two bags, the pantry does the math</div></div>
+    <div class="cell"><div class="val"><em>0</em></div><div class="lab"><b>Bought twice</b>the list checks the shelf</div></div>
   </div></div>
 </div>
 
