@@ -383,7 +383,7 @@
   setStep(0);
 
   // entrada suave: cada bloque aparece una sola vez
-  var revealSel=['.hero-copy','.shot','.bandhead','.compare .col','.inside-head','.window','.detail','.walktxt','.walkphoto','section .head','.quote','.tier','.faq .q','.cta h2','.cta .sub','.cta .btn','.modules'];
+  var revealSel=['.hero-copy','.shot','.band .in > div','.inside-head','.window','.detail','.walktxt','.walkphoto','section .head','.quote','.tier','.faq .q','.cta h2','.cta .sub','.cta .btn','.modules'];
   var targets=[];
   revealSel.forEach(function(sel){ [].slice.call(document.querySelectorAll(sel)).forEach(function(el){ targets.push(el); }); });
   if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
