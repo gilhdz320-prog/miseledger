@@ -24,6 +24,9 @@
     --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
   }
   *{box-sizing:border-box}
+  h1,h2,h3,blockquote{text-wrap:balance}
+  ::selection{background:var(--red);color:#fff}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset:3px}
   html{scroll-behavior:smooth}
   section[id],div[id]{scroll-margin-top:24px}
   @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
@@ -43,11 +46,13 @@
   .wrap{max-width:1240px;margin:0 auto;padding:0 34px}
   a{color:inherit;text-decoration:none}
   /* header */
-  header{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
+  header{display:flex;align-items:center;justify-content:space-between;padding:18px 0;position:sticky;top:0;z-index:60;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
   .mark{font-weight:700;font-size:19px;letter-spacing:-.02em}
   .mark i{color:var(--red);font-style:normal}
   nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-left:26px;color:#4A473F;font-weight:500}
   nav a:hover{color:var(--red)}
+  nav .navcta{background:var(--ink);color:#fff;padding:9px 15px;font-size:10px;letter-spacing:.13em;font-weight:600;margin-left:26px}
+  nav .navcta:hover{background:var(--red);color:#fff}
   .rule{height:1px;background:var(--rule)}
   /* hero */
   .hero{display:grid;grid-template-columns:1.05fr .95fr;border-bottom:1px solid var(--rule)}
@@ -64,7 +69,7 @@
   .btn{background:var(--ink);color:#fff;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:16px 28px}
   .btn:hover{background:var(--red)}
   .link{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;border-bottom:2px solid var(--red);padding-bottom:4px}
-  .shot{position:relative;background:#141310 url('img/hero.jpg') center 30%/cover no-repeat;min-height:480px;filter:saturate(.82) contrast(1.05)}
+  .shot{position:relative;background:#141310 url('img/hero.jpg') center 42%/cover no-repeat;min-height:480px;filter:saturate(.82) contrast(1.05)}
   .shot::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,12,.12),rgba(14,14,12,.5))}
   .shot .cap{position:absolute;left:26px;bottom:22px;z-index:2;color:#F3EFE6;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
   /* product mockups */
@@ -131,13 +136,13 @@
   .head h2{margin:0;font-size:24px;letter-spacing:-.02em;font-weight:600}
   .head span{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey)}
   /* band: four facts, stacked value + label */
-  .band{background:var(--ink);color:#F3EFE6}
+  .band{background:var(--ink);color:#F3EFE6;border-top:1px solid #232120}
   .band .in{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#2A2824}
   .band .cell{background:var(--ink);padding:38px 34px 42px}
   .band .val{font-size:46px;font-weight:600;letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums;display:flex;align-items:baseline;gap:2px}
   .band .val em{font-family:var(--serif);font-style:italic;color:var(--red);font-size:.72em;letter-spacing:0}
   .band .lab{margin-top:14px;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#8C8579;line-height:1.7;max-width:190px}
-  .band .lab b{display:block;color:#F3EFE6;font-weight:600;letter-spacing:.14em}
+  .band .lab b{display:block;color:#F3EFE6;font-weight:600;letter-spacing:.14em;margin-bottom:5px}
   #walk{background:var(--paper);padding:96px 0 0;border-top:1px solid var(--rule)}
   .walkgrid{display:grid;grid-template-columns:.92fr 1.08fr;gap:64px;align-items:center;min-height:520px}
   .walktxt .step{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
@@ -147,6 +152,8 @@
   .prog{display:flex;gap:7px;margin-top:32px}
   .prog i{display:block;width:42px;height:2px;background:#D8D2C6}
   .prog i.on{background:var(--red)}
+  .prog{align-items:center}
+  .pcount{margin-left:10px;font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--grey)}
   .walkphoto{background:#141310 center 30%/cover no-repeat;min-height:460px;position:relative}
   .walkphoto::after{content:"";position:absolute;inset:0;background:rgba(14,14,12,.18);z-index:2;pointer-events:none}
   .walkphoto .tag{position:absolute;left:0;top:0;z-index:2;background:var(--red);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;padding:9px 14px}
@@ -184,9 +191,8 @@
 <div class="wrap">
   <header>
     <div class="mark">Proof<i>.</i></div>
-    <nav><a href="#system">System</a><a href="#walk">The walk</a><a href="#price">Start</a><a href="#faq">FAQ</a></nav>
+    <nav><a href="#system">System</a><a href="#walk">The walk</a><a href="#price">Start</a><a href="#faq">FAQ</a><a class="navcta" href="mailto:hello@kyvex.tech?subject=Proof%20pilot">Request a pilot</a></nav>
   </header>
-  <div class="rule"></div>
 </div>
 
 <div class="wrap">
@@ -290,7 +296,7 @@
         <span class="step" id="step">01 — The door</span>
         <h2 id="title">You come in, and <em>the day is planned.</em></h2>
         <p id="copy">Briefing, prep sheet, four station sheets and the message to students — printable or copied in one tap.</p>
-        <div class="prog"><i class="on"></i><i></i><i></i><i></i></div>
+        <div class="prog"><i class="on"></i><i></i><i></i><i></i><span class="pcount" id="pcount">1 / 4</span></div>
       </div>
       <div class="walkphoto" id="walkphoto"><div class="ph" id="phA"></div><div class="ph" id="phB"></div><span class="tag" id="wtag">01</span></div>
     </div>
@@ -370,6 +376,7 @@
     sEl.textContent=st.step; tEl.innerHTML=st.title; cEl.textContent=st.copy;
     tag.textContent=('0'+(i+1)).slice(-2);
     bars.forEach(function(b,k){ b.classList.toggle('on', k<=i); });
+    var pc=document.getElementById('pcount'); if(pc) pc.textContent=(i+1)+' / 4';
     if(st.img!==curImg){
       curImg=st.img;
       var next=layers[1-cur];
