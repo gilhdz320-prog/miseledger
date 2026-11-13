@@ -1,0 +1,15 @@
+Coloca aquí 8 fotos JPG con estos nombres exactos:
+
+hero.jpg        cocina industrial, acero, luz lateral
+walk-1.jpg      entrada / puerta de cocina
+walk-2.jpg      estantería de despensa o cámara fría
+walk-3.jpg      tabla de corte, vista cenital
+walk-4.jpg      línea de cocción, vapor o sartén
+pantry.jpg      frascos y botes etiquetados
+list.jpg        lista escrita a mano
+notebook.jpg    manos escribiendo o tablet
+
+Fuente recomendada: Pexels o Unsplash (gratis, uso comercial).
+NO uses resultados de Google de Shutterstock, Dreamstime ni Freepik: son de pago.
+
+Al guardar desde el navegador elige "Use .jpg".

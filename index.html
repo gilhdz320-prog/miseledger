@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Proof — the kitchen that remembers</title>
+<meta name="description" content="Proof is the lab-operations system for teaching kitchens: week plans, a pantry that knows its pack sizes, temperatures with corrective actions, and the notebook that replaces the paper manual."/>
+<meta property="og:title" content="Proof — what happened in the kitchen, on the record"/>
+<meta property="og:image" content="og.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="og.png"/>
+<meta property="og:description" content="Built inside a working teaching kitchen. One record, from the door to the line."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E0E0C; --paper:#FFFFFF; --soft:#F7F6F3; --grey:#5F5B54; --rule:#E6E3DC; --red:#D93A1E;
+    --sans:"Archivo",-apple-system,Helvetica,Arial,sans-serif;
+    --serif:"Instrument Serif",Georgia,serif;
+    --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  section[id],div[id]{scroll-margin-top:24px}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 34px}
+  a{color:inherit;text-decoration:none}
+  /* header */
+  header{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
+  .mark{font-weight:700;font-size:19px;letter-spacing:-.02em}
+  .mark i{color:var(--red);font-style:normal}
+  nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-left:26px;color:#4A473F;font-weight:500}
+  nav a:hover{color:var(--red)}
+  .rule{height:1px;background:var(--rule)}
+  /* hero */
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;border-bottom:1px solid var(--rule)}
+  .hero-copy{padding:72px 54px 72px 0;display:flex;flex-direction:column;justify-content:center}
+  .kicker{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--grey)}
+  h1{margin:18px 0 0;font-size:clamp(42px,5.2vw,74px);line-height:.94;letter-spacing:-.045em;font-weight:600}
+  h1 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--red)}
+  .lede{margin:24px 0 0;font-size:16.5px;line-height:1.6;color:#3A3833;max-width:470px}
+  .for{margin-top:16px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--grey)}
+  .actions{margin-top:34px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+  .btn{background:var(--ink);color:#fff;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:16px 28px}
+  .btn:hover{background:var(--red)}
+  .link{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;border-bottom:2px solid var(--red);padding-bottom:4px}
+  .shot{position:relative;background:#141310 url('img/hero.jpg') center 30%/cover no-repeat;min-height:560px}
+  .shot::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,12,.12),rgba(14,14,12,.5))}
+  .shot .cap{position:absolute;left:26px;bottom:22px;z-index:2;color:#F3EFE6;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
+  /* band: before/after */
+  .band{background:var(--ink);color:#F3EFE6}
+  .band .in{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#2A2824}
+  .band .in div{background:var(--ink);padding:32px 28px 36px}
+  .n{font-size:44px;font-weight:600;letter-spacing:-.04em;line-height:1}
+  .n em{font-family:var(--serif);font-style:italic;color:var(--red)}
+  .nl{margin-top:9px;font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#9C978D;line-height:1.5}
+  .nl b{color:#F3EFE6;font-weight:600}
+  /* product mockups */
+  .inside{background:var(--ink);color:#F3EFE6;padding:96px 0 84px;overflow:hidden}
+  .inside-head{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;border-bottom:1px solid #2A2824;padding-bottom:22px}
+  .inside-head h2{margin:12px 0 0;font-size:clamp(26px,3.2vw,40px);line-height:1.04;letter-spacing:-.03em;font-weight:600;max-width:620px}
+  .inside-head h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--red)}
+  .inside-head .side{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#8C8579;text-align:right;line-height:1.7}
+  .stage{display:grid;grid-template-columns:1.42fr .58fr;gap:26px;align-items:start;margin-top:44px}
+  .window{background:#fff;color:var(--ink);border-radius:9px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.55),0 1px 0 rgba(255,255,255,.35) inset}
+  .win-bar{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid #EAE6DD;background:#FCFBF8}
+  .win-name{font-size:11.5px;font-weight:600;letter-spacing:-.01em}
+  .win-meta{font-family:var(--mono);font-size:8.5px;letter-spacing:.13em;text-transform:uppercase;color:#8C867C}
+  .win-body{padding:18px 16px 20px}
+  .whead{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:end;padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid #EAE6DD}
+  .wbig{display:flex;align-items:baseline;gap:12px}
+  .wbig .num{font-size:46px;font-weight:700;letter-spacing:-.05em;color:#C4321A;line-height:.9;font-variant-numeric:tabular-nums}
+  .wbig .lab{font-size:9.5px;line-height:1.35;color:#8C867C;letter-spacing:.02em}
+  .wfacts{font-size:10.5px;color:#4A473F;line-height:1.85;text-align:right}
+  .wfacts b{font-weight:700;color:#111}
+  .wfacts .muted{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#A9A399;margin-top:4px}
+  .kpi{background:#FCFBF8;padding:11px 12px}
+  .kpi .v{font-size:19px;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+  .kpi .v.r{color:var(--red)}
+  .kpi .k{font-family:var(--mono);font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:#8C867C;margin-top:3px}
+  table.tbl{width:100%;border-collapse:collapse;font-size:11.5px}
+  table.tbl th{font-family:var(--mono);font-size:7.5px;letter-spacing:.13em;text-transform:uppercase;color:#8C867C;text-align:left;font-weight:500;padding:0 0 7px;border-bottom:1px solid #EAE6DD}
+  table.tbl th.n,table.tbl td.n{text-align:right;font-variant-numeric:tabular-nums}
+  table.tbl td{padding:8px 0;border-bottom:1px solid #F2EFE8;vertical-align:middle}
+  table.tbl tr:last-child td{border-bottom:0}
+  table.tbl tr.flag td{background:#FDF7F5}
+  table.tbl tr.flag td:first-child{box-shadow:inset 2px 0 0 #D93A1E}
+  .it{font-weight:600;letter-spacing:-.01em}
+  .sub{display:block;font-size:9.5px;color:#8C867C;margin-top:2px;letter-spacing:0}
+  .pill{display:inline-block;font-size:8.5px;letter-spacing:.07em;text-transform:uppercase;padding:3px 7px;border-radius:2px;white-space:nowrap;font-weight:600}
+  .pill.r{background:#FBEDEA;color:#C4321A}
+  .pill.a{background:#FBF1E2;color:#96611A}
+  .pill.g{background:#E9F2EC;color:#1E6A47}
+  .pill.n{background:#F1EEE7;color:#6E6A63}
+  .details{display:grid;gap:18px}
+  .detail{background:#191816;border:1px solid #2E2B26;border-radius:8px;padding:15px 15px 16px;color:#F3EFE6}
+  .detail .dl{font-family:var(--mono);font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:#8C8579;display:flex;justify-content:space-between;margin-bottom:12px}
+  .line{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid #26231F;font-size:11.5px}
+  .line:last-child{border-bottom:0}
+  .line b{font-weight:600}
+  .line .x{opacity:.38;text-decoration:line-through}
+  .line span.mut{display:block;font-size:9px;color:#8C8579;margin-top:2px}
+  .skill{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:11px;padding:6px 0;border-bottom:1px solid #26231F}
+  .skill:last-child{border-bottom:0}
+  .skill i{font-style:normal;font-variant-numeric:tabular-nums;color:#B6B0A5;font-size:10px}
+  .big-n{font-size:30px;font-weight:700;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+  .big-n em{font-style:normal;color:var(--red)}
+  .modules{margin-top:38px;border-top:1px solid #2A2824;padding-top:18px;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#7C766B;display:flex;flex-wrap:wrap;gap:0 26px;line-height:2}
+  .modules b{color:#B6B0A5;font-weight:500}
+  .pricing{display:grid;grid-template-columns:1fr .9fr;gap:56px;align-items:center}
+  .price{font-size:clamp(56px,7vw,96px);font-weight:700;letter-spacing:-.05em;line-height:.95}
+  .price small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);margin-top:12px}
+  .pledge{border-top:1px solid var(--ink);padding-top:18px;font-family:var(--serif);font-size:clamp(20px,2.4vw,28px);line-height:1.3;letter-spacing:-.01em}
+  .pledge em{color:var(--red)}
+  /* --- restored: sections that lost their rules --- */
+  section.pad{padding:88px 0}
+  .head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;border-bottom:1px solid var(--rule);padding-bottom:20px;margin-bottom:34px}
+  .head h2{margin:0;font-size:24px;letter-spacing:-.02em;font-weight:600}
+  .head span{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey)}
+  .bandhead{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;border-bottom:1px solid #2A2824;padding-bottom:22px}
+  .bandhead h2{margin:12px 0 0;font-size:clamp(26px,3.4vw,42px);line-height:1.05;letter-spacing:-.03em;font-weight:600;max-width:560px}
+  .bandhead h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--red)}
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2A2824;margin-top:40px}
+  .col{background:var(--ink);padding:28px 30px 24px}
+  .coltag{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#8C8579;margin-bottom:18px}
+  .col ul{margin:0;padding:0;list-style:none}
+  .col li{font-size:13.5px;line-height:1.5;color:#A9A396;padding:11px 0 11px 24px;border-bottom:1px solid #232120;position:relative}
+  .col li:last-child{border-bottom:0}
+  .col li::before{content:"";position:absolute;left:0;top:17px;width:10px;height:1px;background:#4A463F}
+  .col.after li{color:#F3EFE6}
+  .col.after li::before{background:var(--red);height:2px;top:16px}
+  .colfoot{margin-top:20px;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#7C766B}
+  .col.after .colfoot{color:#F3EFE6}
+  #walk{background:var(--paper);padding:96px 0 0;border-top:1px solid var(--rule)}
+  .walkgrid{display:grid;grid-template-columns:.92fr 1.08fr;gap:64px;align-items:center;min-height:520px}
+  .walktxt .step{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
+  .walktxt h2{margin:14px 0 0;font-size:clamp(28px,3.2vw,44px);line-height:1.03;letter-spacing:-.035em;font-weight:600;max-width:430px}
+  .walktxt h2 em{font-family:var(--serif);font-style:italic;font-weight:400}
+  .walktxt p{margin:18px 0 0;color:#4A473F;font-size:15px;line-height:1.65;max-width:400px}
+  .prog{display:flex;gap:7px;margin-top:32px}
+  .prog i{display:block;width:42px;height:2px;background:#D8D2C6}
+  .prog i.on{background:var(--red)}
+  .walkphoto{background:#141310 center 30%/cover no-repeat;min-height:460px;position:relative}
+  .walkphoto::after{content:"";position:absolute;inset:0;background:rgba(14,14,12,.16)}
+  .walkphoto .tag{position:absolute;left:0;top:0;z-index:2;background:var(--red);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;padding:9px 14px}
+  .faq{border-top:1px solid var(--rule)}
+  .faq .q{border-bottom:1px solid var(--rule);padding:22px 0;display:grid;grid-template-columns:.3fr 1fr;gap:20px}
+  .faq .q h4{margin:0;font-size:15px;font-weight:600;letter-spacing:-.01em}
+  .faq .q p{margin:0;font-size:13.5px;line-height:1.65;color:var(--grey)}
+  .cta{background:var(--ink);color:#F3EFE6;padding:80px 0;text-align:center}
+  .cta h2{margin:0;font-size:clamp(30px,4vw,52px);letter-spacing:-.03em;font-weight:600}
+  .cta h2 em{font-family:var(--serif);font-style:italic;color:var(--red)}
+  .cta .sub{margin:18px 0 0;color:#9C978D;font-size:14px}
+  .cta .btn{margin-top:30px;display:inline-block;background:#fff;color:var(--ink)}
+  .cta .btn:hover{background:var(--red);color:#fff}
+  footer{border-top:1px solid var(--rule);padding:28px 0 80px;display:flex;justify-content:space-between;gap:20px;font-size:11.5px;color:var(--grey)}
+  @media (max-width:980px){
+    .hero{grid-template-columns:1fr}
+    .hero-copy{padding:52px 0}
+    .shot{min-height:340px;order:-1}
+    .walkgrid{grid-template-columns:1fr;gap:32px;padding-bottom:56px}
+    .apps{grid-template-columns:1fr}
+    .tiers{grid-template-columns:1fr}
+    .tier + .tier{border-left:0;border-top:1px solid var(--rule)}
+    .pricing{grid-template-columns:1fr;gap:24px}
+    .quote{grid-template-columns:1fr;gap:24px}
+    .faq .q{grid-template-columns:1fr;gap:8px}
+    .compare{grid-template-columns:1fr}
+    .bandhead{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="mark">Proof<i>.</i></div>
+    <nav><a href="#system">System</a><a href="#walk">The walk</a><a href="#price">Start</a><a href="#faq">FAQ</a></nav>
+  </header>
+  <div class="rule"></div>
+</div>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="kicker">For nutrition programs &amp; campus dining</div>
+      <h1>What happened in the kitchen, <em>on the record.</em></h1>
+      <p class="lede">The week plan, the pantry that knows a bag is five pounds, the temperature log with a corrective action, and the notebook that replaces the paper manual.</p>
+      <div class="for">Built inside a working teaching kitchen</div>
+      <div class="actions">
+        <a class="btn" href="#price">How to start</a>
+        <a class="link" href="#system">See the system</a>
+      </div>
+    </div>
+    <div class="shot"><span class="cap">Enderis 130 · teaching kitchen</span></div>
+  </section>
+</div>
+
+<div class="band">
+  <div class="wrap">
+    <div class="bandhead">
+      <div>
+        <div class="kicker" style="color:#8C8579">The same week, two ways</div>
+        <h2>Six hours of paperwork, <em>or none.</em></h2>
+      </div>
+      <div style="font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#7C766B;text-align:right;line-height:1.8">Measured with the instructor<br>in Enderis 130</div>
+    </div>
+    <div class="compare">
+      <div class="col before">
+        <div class="coltag">Without a record</div>
+        <ul>
+          <li>Rebuild the week plan from last semester's file</li>
+          <li>Drive to the store without knowing what is on the shelf</li>
+          <li>Print a temperature sheet, sign it, file it</li>
+          <li>Grade thirty notebooks on paper, by hand</li>
+          <li>Walk a new TA through the kitchen, again</li>
+        </ul>
+        <div class="colfoot">Six hours a week, every semester</div>
+      </div>
+      <div class="col after">
+        <div class="coltag">With Proof</div>
+        <ul>
+          <li>The week is planned, with its prep and station sheets</li>
+          <li>The list crosses out what the pantry covers</li>
+          <li>A temperature out of range demands a corrective action</li>
+          <li>Grading is five criteria; the semester exports as one document</li>
+          <li>The new TA watched fifteen chapters before the first shift</li>
+        </ul>
+        <div class="colfoot">The same week, on the record</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="inside" id="system">
+  <div class="wrap">
+    <div class="inside-head">
+      <div>
+        <div class="kicker">Inside the system</div>
+        <h2>The screens a lab actually uses, <em>not a feature list.</em></h2>
+      </div>
+      <div class="side">Left: the pantry, real density.<br>Right: two moments that matter.</div>
+    </div>
+
+    <div class="stage">
+      <figure class="window" style="margin:0">
+        <div class="win-bar"><span class="win-name">Pantry</span><span class="win-meta">Enderis 130 · 177 items · week 4</span></div>
+        <div class="win-body">
+          <div class="whead">
+            <div class="wbig"><span class="num">6</span><span class="lab">items need action<br>before Monday</span></div>
+            <div class="wfacts">
+              <div><b>3</b> expire within 7 days</div>
+              <div><b>158 oz</b> of flour on the shelf</div>
+              <div class="muted">last count by Drea Potter-Talton · 3 h ago</div>
+            </div>
+          </div>
+          <table class="tbl">
+            <thead><tr><th>Item</th><th>Location</th><th class="n">On hand</th><th class="n">Par</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr class="flag"><td><span class="it">Whole milk</span><span class="sub">1 gal · lot L-2311 · corrective action open</span></td><td><span class="sub">Cooler R-1</span></td><td class="n">1</td><td class="n">3</td><td><span class="pill r">3 days left</span></td></tr>
+              <tr><td><span class="it">Strawberries</span><span class="sub">1 lb</span></td><td><span class="sub">Cooler R-3</span></td><td class="n">1</td><td class="n">4</td><td><span class="pill a">2 days left</span></td></tr>
+              <tr><td><span class="it">All-purpose flour</span><span class="sub">2 bags × 5 lb</span></td><td><span class="sub">Dry A-2</span></td><td class="n">2</td><td class="n">4</td><td><span class="pill r">below par</span></td></tr>
+              <tr><td><span class="it">Eggs</span><span class="sub">case of 15 dozen</span></td><td><span class="sub">Cooler R-2</span></td><td class="n">18</td><td class="n">24</td><td><span class="pill r">below par</span></td></tr>
+              <tr><td><span class="it">Pectin</span><span class="sub">box · 2 lb</span></td><td><span class="sub">Dry B-3</span></td><td class="n">1</td><td class="n">2</td><td><span class="pill n">ok</span></td></tr>
+              <tr><td><span class="it">Granulated sugar</span><span class="sub">6 bags × 4 lb</span></td><td><span class="sub">Dry A-3</span></td><td class="n">6</td><td class="n">3</td><td><span class="pill g">above par</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </figure>
+
+      <div class="details">
+        <figure class="detail" style="margin:0">
+          <div class="dl"><span>Shopping list</span><span>4 to buy · 2 covered</span></div>
+          <div class="line"><span><b class="x">Whole milk</b><span class="mut">enough in pantry · skipped</span></span><span class="pill g">skip</span></div>
+          <div class="line"><span><b>Strawberries</b><span class="mut">4 lb · produce</span></span><span class="pill a">$8.00</span></div>
+          <div class="line"><span><b class="x">Butter</b><span class="mut">enough in pantry · skipped</span></span><span class="pill g">skip</span></div>
+          <div class="line"><span><b>Pectin</b><span class="mut">1 box · dry goods</span></span><span class="pill a">$10.00</span></div>
+        </figure>
+
+        <figure class="detail" style="margin:0">
+          <div class="dl"><span>Notebook · rubric</span><span>week 4</span></div>
+          <div class="big-n" style="margin-bottom:10px">90<em>%</em></div>
+          <div class="skill"><span>Mise en place</span><i>4 / 4</i></div>
+          <div class="skill"><span>Safety &amp; temperature</span><i>4 / 4</i></div>
+          <div class="skill"><span>Technique</span><i>3 / 4</i></div>
+          <div class="skill"><span>Timing</span><i>4 / 4</i></div>
+          <div class="skill"><span>Documentation</span><i>3 / 4</i></div>
+        </figure>
+      </div>
+    </div>
+
+    <div class="modules">
+      <span><b>Temperatures</b> · corrective action</span>
+      <span><b>Receiving</b> · rejected at the door</span>
+      <span><b>Lots &amp; FEFO</b> · trace</span>
+      <span><b>Counts</b> · blind</span>
+      <span><b>Supplies</b> · QR</span>
+      <span><b>Exams</b> · codes</span>
+      <span><b>Audit</b> · append only</span>
+    </div>
+  </div>
+</div>
+
+<section id="walk">
+  <div class="wrap">
+    <div class="walkgrid">
+      <div class="walktxt">
+        <span class="step" id="step">01 — The door</span>
+        <h2 id="title">You come in, and <em>the day is planned.</em></h2>
+        <p id="copy">Briefing, prep sheet, four station sheets and the message to students — printable or copied in one tap.</p>
+        <div class="prog"><i class="on"></i><i></i><i></i><i></i></div>
+      </div>
+      <div class="walkphoto" id="walkphoto"><span class="tag" id="wtag">01</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="pad" id="why">
+    <div class="quote">
+      <div>
+        <blockquote>“I stopped grading paper and started grading work.”</blockquote>
+        <small>Instructor, teaching kitchen</small>
+      </div>
+      <div class="body">
+        <p style="margin-top:0">Proof was built inside a working lab, not a demo: temperatures, receiving, lots first-out-first, equipment readings with a corrective action, and a training tour that signs off with a date.</p>
+        <p>Every screen is in English, every change is logged, and every institution sees only its own data.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad" id="price" style="padding-top:0">
+    <div class="head"><h2>Two ways to start</h2><span>For a program, or for a funder</span></div>
+    <div class="tiers">
+      <article class="tier">
+        <div class="tier-tag">For a program</div>
+        <h3>Pilot a section</h3>
+        <p>One semester, one section, everything included: week plan, pantry, shopping list, notebooks, exams, attendance, supplies and the TA tour. Onboarding is one hour with the instructor.</p>
+        <div class="tier-foot"><span class="tier-price">Price on request</span><span class="tier-note">Quoted for the size of the program</span></div>
+      </article>
+      <article class="tier dark">
+        <div class="tier-tag">For a funder</div>
+        <h3>Sponsor a cohort</h3>
+        <p>$12,000 funds one year: development, the fifteen training chapters, content support and hosting. The department uses Proof at no license cost during the funded year.</p>
+        <div class="tier-foot"><span class="tier-price">$12,000<small>/ year</small></span><span class="tier-note">Reportable in quarters</span></div>
+      </article>
+    </div>
+    <div class="pledge" style="margin-top:46px">If, at the end of the pilot semester, the instructor cannot name <em>three tasks she stopped doing by hand</em>, it is not renewed.</div>
+  </section>
+
+  <section class="pad faq" id="faq" style="padding-top:0">
+    <div class="head"><h2>Questions people ask</h2><span>Before the first sign-in</span></div>
+    <div class="q"><h4>Where does the data live?</h4><p>In a US region, on managed infrastructure. One institution cannot see another — the separation is enforced on the server and tested on every change.</p></div>
+    <div class="q"><h4>Is student data protected?</h4><p>Notebooks, grades and attendance are education records handled under FERPA, with export and deletion on request. No advertising, no AI training on student work.</p></div>
+    <div class="q"><h4>How long does onboarding take?</h4><p>One hour with the instructor: the roster goes in, the first week is planned, and the QR for supplies is printed. The TA tour is ready the same day.</p></div>
+    <div class="q"><h4>What if it does not work for us?</h4><p>You keep the export of your data and you stop. No lock-in, no long contract — the pilot is one semester.</p></div>
+  </section>
+
+  <footer>
+    <div>Proof · Kyvex Technology LLC · Milwaukee</div>
+    <div>Teaching kitchens · residence halls · campus dining</div>
+  </footer>
+</div>
+
+<div class="cta">
+  <div class="wrap">
+    <h2>Bring your lab <em>on the record.</em></h2>
+    <p class="sub">A 45-minute walkthrough, on your kitchen, with your week.</p>
+    <a class="btn" href="mailto:hello@kyvex.tech?subject=Proof%20pilot">hello@kyvex.tech</a>
+  </div>
+</div>
+
+<script>
+  var steps = [
+    { step:'01 — The door', title:'You come in, and <em>the day is planned.</em>', copy:'Briefing, prep sheet, four station sheets and the message to students — printable or copied in one tap.', img:'img/walk-1.jpg' },
+    { step:'02 — Storage', title:'It knows <em>how much is really there.</em>', copy:'Every bag, box and jar has a pack size. Two bags of five pounds is 158 ounces, and the pantry says so before you ask.', img:'img/walk-2.jpg' },
+    { step:'03 — Prep', title:'The list stops buying <em>what is on the shelf.</em>', copy:'Add the recipe; each line answers one question. What the pantry covers is crossed out, faded, and out of the budget.', img:'img/walk-3.jpg' },
+    { step:'04 — The line', title:'The lab runs, and <em>the record writes itself.</em>', copy:'Temperatures with a corrective action, counts against the system, lots out first-out-first, notebooks graded on five criteria.', img:'img/walk-4.jpg' }
+  ];
+  var sEl=document.getElementById('step'), tEl=document.getElementById('title'), cEl=document.getElementById('copy');
+  var ph=document.getElementById('walkphoto'), tag=document.getElementById('wtag');
+  var bars=[].slice.call(document.querySelectorAll('.prog i'));
+  var section=document.getElementById('walk'), last=-1;
+  function setStep(i){
+    var st=steps[i];
+    sEl.textContent=st.step; tEl.innerHTML=st.title; cEl.textContent=st.copy;
+    ph.style.backgroundImage="url('"+st.img+"')";
+    tag.textContent=('0'+(i+1)).slice(-2);
+    bars.forEach(function(b,k){ b.classList.toggle('on', k<=i); });
+  }
+  setStep(0);
+  window.addEventListener('scroll', function(){
+    var r=section.getBoundingClientRect();
+    var total=section.offsetHeight-window.innerHeight;
+    var p=total>0?Math.min(1,Math.max(0,-r.top/total)):0;
+    var i=Math.min(3,Math.floor(p*4));
+    if(i!==last){ last=i; setStep(i); }
+  }, { passive:true });
+</script>
+</body>
+</html>
