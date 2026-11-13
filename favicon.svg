@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Mise Ledger">
+  <rect x="6.5" y="6.5" width="51" height="51" rx="13" fill="none" stroke="#0E0E0C" stroke-width="3"/>
+  <rect x="17" y="22" width="23" height="3" rx="1.5" fill="#0E0E0C"/>
+  <rect x="17" y="31" width="30" height="3" rx="1.5" fill="#0E0E0C"/>
+  <rect x="17" y="40" width="16" height="3" rx="1.5" fill="#0E0E0C"/>
+  <circle cx="45" cy="45" r="5.5" fill="#D93A1E"/>
+</svg>
