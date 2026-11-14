@@ -242,6 +242,16 @@
     .cta .btn{width:100%}
     .pcount{font-size:8px}
   }
+
+/* film */
+.filmhead{max-width:640px;margin:0 0 26px}
+.filmhead .step{font:600 11px/1 var(--mono,ui-monospace,monospace);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.filmhead h2{font:600 clamp(26px,3.4vw,40px)/1.1 var(--serif,"Instrument Serif",Georgia,serif);margin:.34em 0 .5em;letter-spacing:-.01em}
+.filmhead p{margin:0;color:var(--muted);font-size:clamp(15px,1.5vw,17px);line-height:1.55}
+.filmwrap{position:relative;border-radius:18px;overflow:hidden;background:#0e0e0c;box-shadow:0 30px 80px rgba(14,14,12,.18)}
+.filmwrap video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#0e0e0c}
+.filmcap{position:absolute;right:14px;bottom:12px;font:500 10.5px/1 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,241,233,.55);pointer-events:none}
+@media (max-width:640px){.filmcap{display:none}}
 </style>
 </head>
 <body>
@@ -346,6 +356,24 @@
     </div>
   </div>
 </div>
+
+<section id="film" class="pad" style="padding-top:0">
+  <div class="wrap">
+    <div class="filmhead">
+      <span class="step">Thirty seconds</span>
+      <h2>The product, <em>not a promise.</em></h2>
+      <p>No actors, no avatars: this is the software running on the week an instructor actually teaches.</p>
+    </div>
+    <div class="filmwrap">
+      <video id="filmVideo" poster="/film/poster.jpg" playsinline muted loop preload="metadata" controls
+             aria-label="Walkthrough of Mise Ledger">
+        <source src="/film/miseledger.mp4" type="video/mp4"/>
+        Your browser cannot play this video. It shows the week plan, pantry, temperatures, ServSafe map and counts.
+      </video>
+      <span class="filmcap">Enderis Hall 130 · Station 1</span>
+    </div>
+  </div>
+</section>
 
 <section id="walk">
   <div class="wrap">
@@ -476,6 +504,23 @@
   window.addEventListener('scroll', onScroll, { passive:true });
   window.addEventListener('resize', onScroll);
   onScroll();
+</script>
+
+<script>
+/* The film plays when it is on screen and pauses when it is not: no autoplaying
+   sound, no battery spent on a section nobody is looking at. */
+(function(){
+  var v = document.getElementById('filmVideo');
+  if (!v || !('IntersectionObserver' in window)) return;
+  v.removeAttribute('controls');
+  v.addEventListener('click', function(){ if (v.paused) { v.play(); } else { v.pause(); } });
+  new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { v.play().catch(function(){}); }
+      else { v.pause(); }
+    });
+  }, { threshold: 0.35 }).observe(v);
+})();
 </script>
 </body>
 </html>
