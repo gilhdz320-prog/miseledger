@@ -51,7 +51,7 @@
   .mark i{color:var(--red);font-style:normal}
   nav a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-left:26px;color:#4A473F;font-weight:500}
   nav a:hover{color:var(--red)}
-  nav .navcta{background:var(--ink);color:#fff;padding:9px 15px;font-size:10px;letter-spacing:.13em;font-weight:600;margin-left:26px}
+  nav .navcta{background:var(--ink);color:#fff;padding:11px 18px;font-size:10.5px;letter-spacing:.13em;font-weight:600;margin-left:26px;border-radius:2px}
   nav .navcta:hover{background:var(--red);color:#fff}
   .rule{height:1px;background:var(--rule)}
   /* hero */
@@ -61,7 +61,7 @@
   .hero-topline{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
   .live{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#F3EFE6;background:var(--ink);padding:6px 11px;border-radius:2px;display:inline-flex;align-items:center;gap:7px}
   .live i{width:6px;height:6px;border-radius:50%;background:var(--red);box-shadow:0 0 0 3px rgba(217,58,30,.18)}
-  h1{margin:18px 0 0;font-size:clamp(40px,4.7vw,66px);line-height:.95;letter-spacing:-.045em;font-weight:600}
+  h1{margin:20px 0 0;font-size:clamp(44px,5.6vw,84px);line-height:.92;letter-spacing:-.05em;font-weight:600}
   h1 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--red)}
   .lede{margin:24px 0 0;font-size:16.5px;line-height:1.6;color:#3A3833;max-width:470px}
   .for{margin-top:16px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--grey)}
@@ -254,6 +254,15 @@
 .filmwrap video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#0e0e0c}
 .filmcap{position:absolute;right:14px;bottom:12px;font:500 10.5px/1 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,241,233,.55);pointer-events:none}
 @media (max-width:640px){.filmcap{display:none}}
+
+  /* botón flotante: preguntar por el piloto sin buscar un formulario */
+  .askfab{position:fixed;right:22px;bottom:22px;z-index:80;display:inline-flex;align-items:center;gap:9px;
+    background:var(--ink);color:#F6F3EC;padding:12px 18px;border-radius:999px;font-size:11.5px;font-weight:600;
+    letter-spacing:.02em;text-decoration:none;box-shadow:0 14px 34px rgba(14,14,12,.28);
+    transition:transform .18s cubic-bezier(.22,.7,.2,1),background .18s}
+  .askfab:hover{transform:translateY(-2px);background:var(--red)}
+  .askfab i{width:7px;height:7px;border-radius:999px;background:#5BD08A;display:inline-block}
+  @media (max-width:640px){.askfab{right:14px;bottom:14px;padding:11px 15px;font-size:11px}}
 </style>
 </head>
 <body>
@@ -261,7 +270,7 @@
 <div class="wrap">
   <header>
     <div class="mark"><svg width="20" height="20" viewBox="0 0 64 64" aria-hidden="true" style="vertical-align:-3px;margin-right:9px"><rect x="6.5" y="6.5" width="51" height="51" rx="13" fill="none" stroke="currentColor" stroke-width="4"/><rect x="17" y="23" width="23" height="4" rx="2" fill="currentColor"/><rect x="17" y="32" width="30" height="4" rx="2" fill="currentColor"/><rect x="17" y="41" width="16" height="4" rx="2" fill="currentColor"/><circle cx="45" cy="45" r="5.5" fill="#D93A1E"/></svg>Mise Ledger</div>
-    <nav><a href="#system">System</a><a href="#walk">The walk</a><a href="#price">Start</a><a href="#faq">FAQ</a><a href="https://app.miseledger.com" style="margin-left:26px">Sign in</a><a class="navcta" href="mailto:hello@kyvex.tech?subject=Pilot">Request a pilot</a></nav>
+    <nav><a href="#system">System</a><a href="#walk">The walk</a><a href="#price">Start</a><a href="#faq">FAQ</a><a href="https://app.miseledger.com" style="margin-left:26px">Sign in</a><a class="navcta" href="mailto:hello@miseledger.com?subject=Pilot">Request a pilot</a></nav>
   </header>
 </div>
 
@@ -525,5 +534,6 @@
   }, { threshold: 0.35 }).observe(v);
 })();
 </script>
+<a class="askfab" href="mailto:hello@miseledger.com?subject=Pilot%20question"><i></i>Ask about a pilot</a>
 </body>
 </html>
