@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Security — Mise Ledger</title>
+<meta name="description" content="How Mise Ledger protects institutional data: isolation, access control, backups and incident response."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/legal.css"/>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="brand" href="/">Mise Ledger <span>· teaching kitchens</span></a>
+  <nav><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/security.html">Security</a><a href="/#pilot">Request a pilot</a></nav>
+</div></header>
+
+<main><div class="wrap">
+  <div class="eyebrow">Legal</div>
+  <h1>Security</h1>
+  <p class="lead">What we do to protect institutional data, written for the person who has to sign off on it.</p>
+
+  <div class="note">Last updated 17 November 2026. This page describes the system as built, not a certification. We do not hold SOC 2 or ISO 27001.</div>
+
+  <h2>Isolation between institutions</h2>
+  <p>Every row carries the institution it belongs to, and every request is filtered by the institution of the signed-in account on the server. A student of one institution cannot read another's data even with a hand-crafted request; the automated test suite includes the attempt.</p>
+
+  <h2>Accounts and access</h2>
+  <ul>
+    <li>Staff sign in with email and password; passwords are hashed with scrypt, never stored in clear.</li>
+    <li>Students do not get passwords: staff issue a one-time code and PIN, which is redeemed once and scoped to that student.</li>
+    <li>Roles (owner, instructor, TA, comptroller, student) are enforced on the server, never only in the interface.</li>
+  </ul>
+
+  <h2>Transport and storage</h2>
+  <ul>
+    <li>HTTPS everywhere; HSTS on the application domain.</li>
+    <li>Encryption at rest at the database provider (Supabase, US region).</li>
+    <li>Uploaded files are served from a private bucket, not a public path.</li>
+  </ul>
+
+  <h2>Backups</h2>
+  <p>The database provider takes daily point-in-time backups. A restore is tested before each semester.</p>
+
+  <h2>Change control</h2>
+  <p>Every change runs against 39 automated test suites and 154 browser checks before it reaches production. The audit log of the application records who changed what, and can be exported.</p>
+
+  <h2>Incident response</h2>
+  <ul>
+    <li>We notify the institution within <strong>48 hours</strong> of learning of an incident affecting its data.</li>
+    <li>The notice says what was affected, what we did, and what the institution should do.</li>
+    <li>We keep a written record of the incident and the fix.</li>
+  </ul>
+
+  <h2>What we do not have</h2>
+  <p>No SOC 2 report, no ISO 27001 certificate, no single sign-on yet. If your procurement requires any of these, say so early and we will tell you honestly whether we can meet it — rather than discover it during a review.</p>
+
+  <h2>Reporting a problem</h2>
+  <p><a href="mailto:hello@miseledger.com">hello@miseledger.com</a>. We answer within one business day.</p>
+</div></main>
+
+<footer><div class="wrap"><span>Mise Ledger · Kyvex Technology LLC · Milwaukee</span><span>Teaching kitchens · residence halls · campus dining</span></div></footer>
+</body></html>
