@@ -18,7 +18,9 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://www.miseledger.com/og.png"/>
 <meta property="og:description" content="Built inside a working teaching kitchen. One record, from the door to the line."/>
+<link rel="preload" as="image" href="/img/hero.webp" type="image/webp"/>
 <link rel="stylesheet" href="/fonts/fonts.css">
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"Organization","name":"Mise Ledger","legalName":"Kyvex Technology LLC","url":"https://www.miseledger.com/","logo":"https://www.miseledger.com/favicon.svg","email":"hello@miseledger.com","address":{"@type":"PostalAddress","addressLocality":"Milwaukee","addressRegion":"WI","addressCountry":"US"}},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Mise Ledger","applicationCategory":"EducationalApplication","operatingSystem":"Web","url":"https://www.miseledger.com/","description":"Lab-operations system for university teaching kitchens: week plans, pantry and inventory, temperature logs with corrective actions, and a digital lab notebook for students.","publisher":{"@type":"Organization","name":"Kyvex Technology LLC"}}]</script>
 <style>
   :root{
     --ink:#0E0E0C; --paper:#FFFFFF; --soft:#F7F6F3; --grey:#5F5B54; --rule:#E6E3DC; --red:#D93A1E;
@@ -123,7 +125,7 @@
   .btn{background:var(--ink);color:#fff;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:16px 28px}
   .btn:hover{background:var(--red)}
   .link{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;border-bottom:2px solid var(--red);padding-bottom:4px}
-  .shot{position:relative;background:#141310 url('img/hero.jpg') center 42%/cover no-repeat;min-height:480px;filter:contrast(1.08) saturate(1.04)}
+  .shot{position:relative;background:#141310 url('img/hero.webp') center 42%/cover no-repeat;min-height:480px;filter:contrast(1.08) saturate(1.04)}
   .shot::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,12,.04),rgba(14,14,12,.34))}
   .shot .cap{position:absolute;left:26px;bottom:22px;z-index:2;color:#F3EFE6;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
   /* product mockups */
@@ -281,6 +283,8 @@
   .pform button:hover{background:var(--red);color:#fff}
   .pform .msg{grid-column:1/-1;text-align:center;font-size:13px;color:#9C978D;min-height:1em}
   .cta .alt{margin-top:14px;font-size:12.5px;color:#9C978D}
+  .pform .hp{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+  .pform button[disabled]{opacity:.6;cursor:progress}
   .cta .alt a{border-bottom:1px solid #4A473F}
   @media (max-width:980px){
     .tiers{grid-template-columns:1fr}
@@ -645,7 +649,7 @@ footer.big{display:block;border-top:1px solid var(--rule);padding:64px 0 40px;fo
     <div class="browser">
       <div class="bbar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span class="url"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2.5" y="5.5" width="7" height="5" rx="1"/><path d="M4 5.5V4a2 2 0 014 0v1.5"/></svg>app.miseledger.com</span><span class="live2">Live product</span></div>
     <div class="filmwrap">
-      <video id="filmVideo" poster="/film/poster.jpg" playsinline muted loop preload="metadata" controls
+      <video id="filmVideo" poster="/film/poster.webp" playsinline muted loop preload="metadata" controls
              aria-label="Walkthrough of Mise Ledger">
         <source src="/film/miseledger.mp4" type="video/mp4"/>
         Your browser cannot play this video. It shows the week plan, pantry, temperatures, ServSafe map and counts.
@@ -698,7 +702,7 @@ footer.big{display:block;border-top:1px solid var(--rule);padding:64px 0 40px;fo
           <div class="ap">
             <div class="wk">Week 4 · Station 2</div>
             <h4>Strawberry jam with low-sugar pectin</h4>
-            <div class="ph2" style="background-image:url('img/notebook.jpg')"></div>
+            <div class="ph2" style="background-image:url('img/notebook.webp')"></div>
             <div class="row2"><span>Read the lesson</span><i>DONE</i></div>
             <div class="row2"><span>Watch: setting point (4 min)</span><i>DONE</i></div>
             <div class="row2"><span>Mise en place, 12 portions</span><i class="t">8 items</i></div>
@@ -796,10 +800,11 @@ footer.big{display:block;border-top:1px solid var(--rule);padding:64px 0 40px;fo
       <label>Lab sections<input name="sections" type="number" min="1" inputmode="numeric" placeholder="e.g. 2"/></label>
       <label>Students per semester<input name="students" type="number" min="1" inputmode="numeric" placeholder="e.g. 48"/></label>
       <label class="full">What should the pilot fix first?<textarea name="note" rows="3" placeholder="Shopping, temperatures, TA training, notebooks, the audit…"></textarea></label>
+      <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"/></label>
       <button type="submit">Request a pilot</button>
       <div class="msg" id="pilotMsg" role="status" aria-live="polite"></div>
     </form>
-    <p class="alt">Prefer plain email? <a href="mailto:hello@miseledger.com?subject=Pilot">hello@miseledger.com</a></p>
+    <p class="alt"><span id="bookWrap" hidden>Rather pick a time? <a id="bookLink" href="#" target="_blank" rel="noopener">Book a 45-minute demo</a> · </span>Prefer plain email? <a href="mailto:hello@miseledger.com?subject=Pilot">hello@miseledger.com</a></p>
   </div>
 </div>
 
@@ -818,10 +823,10 @@ footer.big{display:block;border-top:1px solid var(--rule);padding:64px 0 40px;fo
 
 <script>
   var steps = [
-    { step:'01 — The door', title:'You come in, and <em>the day is planned.</em>', copy:'Briefing, prep sheet, four station sheets and the message to students — printable or copied in one tap.', img:'img/walk-1.jpg' },
-    { step:'02 — Storage', title:'It knows <em>how much is really there.</em>', copy:'Every bag, box and jar has a pack size. Two bags of five pounds is 158 ounces, and the pantry says so before you ask.', img:'img/walk-2.jpg' },
-    { step:'03 — Prep', title:'The list stops buying <em>what is on the shelf.</em>', copy:'Add the recipe; each line answers one question. What the pantry covers is crossed out, faded, and out of the budget.', img:'img/walk-3.jpg' },
-    { step:'04 — The line', title:'The lab runs, and <em>the record writes itself.</em>', copy:'Temperatures with a corrective action, counts against the system, lots out first-out-first, notebooks graded on five criteria.', img:'img/walk-4.jpg' }
+    { step:'01 — The door', title:'You come in, and <em>the day is planned.</em>', copy:'Briefing, prep sheet, four station sheets and the message to students — printable or copied in one tap.', img:'img/walk-1.webp' },
+    { step:'02 — Storage', title:'It knows <em>how much is really there.</em>', copy:'Every bag, box and jar has a pack size. Two bags of five pounds is 158 ounces, and the pantry says so before you ask.', img:'img/walk-2.webp' },
+    { step:'03 — Prep', title:'The list stops buying <em>what is on the shelf.</em>', copy:'Add the recipe; each line answers one question. What the pantry covers is crossed out, faded, and out of the budget.', img:'img/walk-3.webp' },
+    { step:'04 — The line', title:'The lab runs, and <em>the record writes itself.</em>', copy:'Temperatures with a corrective action, counts against the system, lots out first-out-first, notebooks graded on five criteria.', img:'img/walk-4.webp' }
   ];
   var sEl=document.getElementById('step'), tEl=document.getElementById('title'), cEl=document.getElementById('copy');
   var tag=document.getElementById('wtag');
@@ -896,9 +901,13 @@ footer.big{display:block;border-top:1px solid var(--rule);padding:64px 0 40px;fo
 </script>
 <a class="askfab" href="#pilot"><i></i>Ask about a pilot</a>
 <script>
-/* No lead backend: the form composes a structured email the visitor sends from
-   their own client, so nothing is stored by the site. */
+/* Pilot form: posts to app.miseledger.com/api/leads (stored + emailed to the team).
+   If that fails, it falls back to a pre-filled email so no request is lost. */
 (function(){
+  var LEADS_URL='https://app.miseledger.com/api/leads';
+  /* Booking link (Cal.com or Calendly). Empty = the button stays hidden. */
+  var BOOK_URL='';
+  if(BOOK_URL){ var bw=document.getElementById('bookWrap'), bl=document.getElementById('bookLink'); if(bw&&bl){ bl.href=BOOK_URL; bw.hidden=false; } }
   var f=document.getElementById('pilotForm'), m=document.getElementById('pilotMsg');
   if(!f) return;
   var fab=document.querySelector('.askfab'), cta=document.getElementById('pilot');
@@ -910,8 +919,19 @@ footer.big{display:block;border-top:1px solid var(--rule);padding:64px 0 40px;fo
     if(miss.length){ m.textContent='Please add '+miss.join(', ')+'.'; var first=f.querySelector(':invalid')||f.elements[miss[0]==='name'?'name':miss[0]==='institution'?'institution':'email']; if(first) first.focus(); return; }
     var body=['Pilot request','','Name: '+d.name,'Email: '+d.email,'Role: '+d.role,'Institution: '+d.institution,'Lab sections: '+(d.sections||'-'),'Students per semester: '+(d.students||'-'),'','Fix first:',d.note||'-'].join('\n');
     var subj='Pilot request: '+d.institution;
-    window.location.href='mailto:hello@miseledger.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
-    m.textContent='Your email app should open with the request filled in. If it does not, write to hello@miseledger.com.';
+    var mailto='mailto:hello@miseledger.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+    var btn=f.querySelector('button[type=submit]'); btn.disabled=true; m.textContent='Sending…';
+    var done=function(ok,msg){ btn.disabled=false; m.textContent=msg; if(ok){ f.reset(); } };
+    var ctrl=('AbortController' in window)?new AbortController():null; var tm=setTimeout(function(){ if(ctrl) ctrl.abort(); },12000);
+    fetch(LEADS_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d),signal:ctrl?ctrl.signal:undefined})
+      .then(function(r){ return r.json().catch(function(){return {};}).then(function(j){ return {ok:r.ok,status:r.status,j:j}; }); })
+      .then(function(x){
+        clearTimeout(tm);
+        if(x.ok){ done(true,'Thank you, '+d.name.split(' ')[0]+'. Your request is in; we answer within one business day.'+(BOOK_URL?' You can also pick a time for the walkthrough now.':'')); return; }
+        if(x.status===400){ done(false,(x.j&&x.j.error)||'Please check the form.'); return; }
+        throw new Error('send');
+      })
+      .catch(function(){ clearTimeout(tm); done(false,'We could not send it from here, so your email app will open with the request filled in.'); window.location.href=mailto; });
   });
 })();
 </script>
