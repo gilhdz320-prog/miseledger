@@ -7,9 +7,7 @@
 <meta name="description" content="Security, privacy, accessibility and compliance documents for Mise Ledger: HECVAT, VPAT/ACR, FERPA, subprocessors and the security roadmap."/>
 <link rel="canonical" href="https://www.miseledger.com/trust"/>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/fonts.css">
 <link rel="stylesheet" href="/legal.css"/>
 <style>
   .wrap.w{max-width:1080px}
@@ -19,6 +17,7 @@
   .badge{display:inline-flex;align-items:center;gap:8px;font:600 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#15803d;background:#F0FAF3;border:1px solid #CBEBD5;padding:8px 12px;border-radius:2px}
   .badge::before{content:"";width:7px;height:7px;border-radius:50%;background:#16a34a}
   .hero2 .side{font-size:13px;line-height:1.6;color:var(--grey)}
+  .disc{max-width:760px;margin:0;font-size:15px;line-height:1.65;color:var(--ink,#1b1a17)}
   .hero2 .side a{color:var(--ink)}
   .sec{margin-top:56px}
   .sec>h2{font-size:22px;font-weight:600;letter-spacing:-.02em;margin:0 0 6px}
@@ -80,8 +79,11 @@
       <div><small>Encryption</small><b>In transit and at rest</b><span>HTTPS everywhere with HSTS; the database and file storage are encrypted at rest by the provider.</span><span class="st on">In place</span></div>
       <div><small>Isolation</small><b>One institution, one wall</b><span>Every request is filtered by institution on the server; the test suite tries to cross it on every change.</span><span class="st on">In place</span></div>
       <div><small>Access</small><b>Roles enforced on the server</b><span>Owner, instructor, TA, comptroller and student. Passwords hashed with scrypt; students use a one-time code and PIN.</span><span class="st on">In place</span></div>
-      <div><small>Audit</small><b>Append-only audit log</b><span>Who, what, when and from which IP, including sign-in and sign-out. The database rejects any edit or deletion.</span><span class="st on">In place</span></div>
-      <div><small>Change control</small><b>Tested before it ships</b><span>39 test suites, 155 browser checks and GitHub CodeQL static analysis on every change.</span><span class="st on">In place</span></div>
+      <div><small>Sign-in</small><b>Two-step verification for staff</b><span>Authenticator-app codes required for owners, instructors and comptrollers. Accounts lock after repeated failed attempts.</span><span class="st on">In place</span></div>
+      <div><small>Sessions</small><b>30-minute idle timeout</b><span>Sessions are tracked on the server: signing out, a password reset or a role change ends them everywhere.</span><span class="st on">In place</span></div>
+      <div><small>Browser</small><b>Strict security headers</b><span>Content Security Policy, HSTS preload and no third-party scripts or fonts: every library is served from our own domain.</span><span class="st on">In place</span></div>
+      <div><small>Audit</small><b>Append-only audit log</b><span>Who, what, when and from which IP: sign-ins, failed attempts, lockouts, role changes and every use of an AI feature (without copying the content). The database rejects any edit or deletion.</span><span class="st on">In place</span></div>
+      <div><small>Change control</small><b>Tested before it ships</b><span>40 test suites, 155 browser checks, GitHub CodeQL static analysis and an OWASP ZAP scan on every change.</span><span class="st on">In place</span></div>
       <div><small>Accessibility</small><b>WCAG 2.1 AA</b><span>Automated checks on every screen with 0 open violations; manual screen-reader testing in progress.</span><span class="st on">In place</span></div>
       <div><small>Backups</small><b>Daily, point in time</b><span>Provider backups, with a restore tested before each semester.</span><span class="st on">In place</span></div>
       <div><small>Incidents</small><b>48-hour notice</b><span>We notify the institution within 48 hours of learning of an incident that affects its data.</span><span class="st on">In place</span></div>
@@ -119,11 +121,17 @@
     <h2 id="c4">Roadmap</h2>
     <p class="s">What is not in place yet, and when it is planned.</p>
     <div class="road">
-      <div><small>Next 30 days</small><ul><li>Multi-factor authentication for staff</li><li>Idle-session timeout</li><li>Manual screen-reader testing</li></ul></div>
+      <div><small>Next 30 days</small><ul><li>Manual screen-reader testing</li><li>Content Security Policy without inline scripts</li></ul></div>
       <div><small>60 days</small><ul><li>Written continuity and disaster recovery plans</li><li>AI use and risk statement</li></ul></div>
       <div><small>90 days</small><ul><li>Single sign-on (SAML) for campus accounts</li><li>Authenticated vulnerability scan</li></ul></div>
       <div><small>Later</small><ul><li>Third-party penetration test</li><li>SOC 2 Type I</li></ul></div>
     </div>
+  </section>
+
+  <section class="sec" id="disclosure" aria-labelledby="c5">
+    <h2 id="c5">Reporting a vulnerability</h2>
+    <p class="s">Found something? Tell us first and we will work with you.</p>
+    <p class="disc">Email <a href="mailto:hello@miseledger.com?subject=Security%20report">hello@miseledger.com</a> with the steps to reproduce. We aim to acknowledge within 2 business days and keep you updated until it is fixed. Please test only against your own account, do not access other people's data, and give us reasonable time to fix before disclosing. We will not pursue good-faith research that follows these rules. Machine-readable contact: <a href="/.well-known/security.txt">security.txt</a>.</p>
   </section>
 
   <div class="contact">
