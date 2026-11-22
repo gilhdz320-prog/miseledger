@@ -6,12 +6,17 @@
 <title>Mise Ledger — the kitchen that remembers</title>
 <meta name="description" content="Mise Ledger is the lab-operations system for teaching kitchens: week plans, a pantry that knows its pack sizes, temperatures with corrective actions, and the notebook that replaces the paper manual."/>
 <meta property="og:title" content="Mise Ledger — what happened in the kitchen, on the record"/>
-<meta property="og:image" content="og.png"/>
+<meta property="og:image" content="https://miseledger.com/og.png"/>
+<meta property="og:url" content="https://miseledger.com/"/>
+<link rel="canonical" href="https://miseledger.com/"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="/favicon.ico" sizes="any"/>
+<meta name="theme-color" content="#0E0E0C"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta property="og:type" content="website"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="og.png"/>
+<meta name="twitter:image" content="https://miseledger.com/og.png"/>
 <meta property="og:description" content="Built inside a working teaching kitchen. One record, from the door to the line."/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -170,6 +175,82 @@
   footer a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule)}
   footer a:hover{border-color:var(--ink)}
   footer{border-top:1px solid var(--rule);padding:28px 0 80px;display:flex;justify-content:space-between;gap:20px;font-size:11.5px;color:var(--grey)}
+
+  /* --- quote + tiers (base rules were missing) --- */
+  .quote{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;border-top:1px solid var(--ink);padding-top:34px}
+  .quote blockquote{margin:0;font-family:var(--serif);font-size:clamp(28px,3.4vw,44px);line-height:1.08;letter-spacing:-.01em}
+  .quote small{display:block;margin-top:16px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey)}
+  .quote .body p{margin:14px 0 0;font-size:15px;line-height:1.65;color:#3A3833}
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule)}
+  .tier{padding:34px 30px 30px;display:flex;flex-direction:column;gap:12px;background:var(--paper)}
+  .tier + .tier{border-left:1px solid var(--rule)}
+  .tier.dark{background:var(--ink);color:#F3EFE6}
+  .tier-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
+  .tier h3{margin:0;font-size:24px;letter-spacing:-.02em;font-weight:600}
+  .tier p{margin:0;font-size:14px;line-height:1.6;color:var(--grey);flex:1}
+  .tier.dark p{color:#B6B0A5}
+  .tier ul{margin:0;padding:0;list-style:none;font-size:13px;line-height:1.5}
+  .tier li{padding:6px 0;border-bottom:1px solid var(--rule)}
+  .tier.dark li{border-color:#2A2824}
+  .tier li::before{content:"— ";color:var(--red)}
+  .tier-foot{display:flex;flex-direction:column;gap:4px;margin-top:14px;padding-top:16px;border-top:1px solid var(--ink)}
+  .tier.dark .tier-foot{border-color:#F3EFE6}
+  .tier-price{font-size:32px;font-weight:700;letter-spacing:-.04em}
+  .tier-price small{font-size:13px;font-weight:500;letter-spacing:0;color:var(--grey);margin-left:4px}
+  .tier.dark .tier-price small{color:#B6B0A5}
+  .tier-note{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey)}
+  .tier.dark .tier-note{color:#8C8579}
+  .band .note{grid-column:1/-1;background:var(--ink);padding:0 32px 18px;font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:#6E6A63}
+  /* before / after */
+  .ba{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule)}
+  .ba > div{padding:30px}
+  .ba .after{background:var(--soft);border-left:1px solid var(--rule)}
+  .ba h3{margin:0 0 14px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);font-weight:500}
+  .ba .after h3{color:var(--red)}
+  .ba .row{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:11px 0;border-top:1px solid var(--rule);font-size:14px;line-height:1.5}
+  .ba .row b{font-weight:600;font-size:12px}
+  .ba .before .row span{color:var(--grey)}
+  /* roles */
+  .roles{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+  .role{background:var(--paper);padding:26px 22px}
+  .role .who{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
+  .role h3{margin:10px 0 8px;font-size:18px;letter-spacing:-.02em;font-weight:600;line-height:1.2}
+  .role p{margin:0;font-size:13.5px;line-height:1.6;color:var(--grey)}
+  /* trust strip */
+  .trust{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--rule)}
+  .trust div{padding:22px 20px 22px 0}
+  .trust div + div{padding-left:20px;border-left:1px solid var(--rule)}
+  .trust b{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+  .trust span{font-size:12.5px;line-height:1.55;color:var(--grey)}
+  /* pilot form */
+  .pform{max-width:760px;margin:34px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:left}
+  .pform label{display:flex;flex-direction:column;gap:6px;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#9C978D}
+  .pform input,.pform select,.pform textarea{font:15px var(--sans);color:#F3EFE6;background:#191816;border:1px solid #2E2B26;border-radius:2px;padding:12px 12px;width:100%}
+  .pform input:focus,.pform select:focus,.pform textarea:focus{outline:2px solid var(--red);outline-offset:0;border-color:transparent}
+  .pform .full{grid-column:1/-1}
+  .pform button{grid-column:1/-1;justify-self:center;margin-top:8px;border:0;cursor:pointer;background:#fff;color:var(--ink);font:600 11.5px var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:16px 28px}
+  .pform button:hover{background:var(--red);color:#fff}
+  .pform .msg{grid-column:1/-1;text-align:center;font-size:13px;color:#9C978D;min-height:1em}
+  .cta .alt{margin-top:14px;font-size:12.5px;color:#9C978D}
+  .cta .alt a{border-bottom:1px solid #4A473F}
+  @media (max-width:980px){
+    .tiers{grid-template-columns:1fr}
+    .ba{grid-template-columns:1fr}
+    .ba .after{border-left:0;border-top:1px solid var(--rule)}
+    .roles{grid-template-columns:repeat(2,1fr)}
+    .trust{grid-template-columns:repeat(2,1fr)}
+    .trust div:nth-child(3){padding-left:0;border-left:0}
+    .trust div:nth-child(n+3){border-top:1px solid var(--rule)}
+  }
+  @media (max-width:640px){
+    .roles,.trust{grid-template-columns:1fr}
+    .trust div,.trust div + div{padding:16px 0;border-left:0}
+    .trust div + div{border-top:1px solid var(--rule)}
+    .ba > div{padding:22px 18px}
+    .ba .row{grid-template-columns:1fr;gap:2px}
+    .pform{grid-template-columns:1fr}
+    .askfab{display:none}
+  }
   @media (max-width:980px){
     .hero{grid-template-columns:1fr}
     .hero-copy{padding:52px 0}
@@ -247,9 +328,9 @@
 
 /* film */
 .filmhead{max-width:640px;margin:0 0 26px}
-.filmhead .step{font:600 11px/1 var(--mono,ui-monospace,monospace);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.filmhead .step{font:600 11px/1 var(--mono,ui-monospace,monospace);letter-spacing:.16em;text-transform:uppercase;color:var(--red)}
 .filmhead h2{font:600 clamp(26px,3.4vw,40px)/1.1 var(--serif,"Instrument Serif",Georgia,serif);margin:.34em 0 .5em;letter-spacing:-.01em}
-.filmhead p{margin:0;color:var(--muted);font-size:clamp(15px,1.5vw,17px);line-height:1.55}
+.filmhead p{margin:0;color:var(--grey);font-size:clamp(15px,1.5vw,17px);line-height:1.55}
 .filmwrap{position:relative;border-radius:18px;overflow:hidden;background:#0e0e0c;box-shadow:0 30px 80px rgba(14,14,12,.18)}
 .filmwrap video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#0e0e0c}
 .filmcap{position:absolute;right:14px;bottom:12px;font:500 10.5px/1 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,241,233,.55);pointer-events:none}
@@ -259,10 +340,11 @@
   .askfab{position:fixed;right:22px;bottom:22px;z-index:80;display:inline-flex;align-items:center;gap:9px;
     background:var(--ink);color:#F6F3EC;padding:12px 18px;border-radius:999px;font-size:11.5px;font-weight:600;
     letter-spacing:.02em;text-decoration:none;box-shadow:0 14px 34px rgba(14,14,12,.28);
-    transition:transform .18s cubic-bezier(.22,.7,.2,1),background .18s}
+    transition:transform .18s cubic-bezier(.22,.7,.2,1),background .18s,opacity .2s}
   .askfab:hover{transform:translateY(-2px);background:var(--red)}
   .askfab i{width:7px;height:7px;border-radius:999px;background:#5BD08A;display:inline-block}
-  @media (max-width:640px){.askfab{right:14px;bottom:14px;padding:11px 15px;font-size:11px}}
+  @media (max-width:640px){.askfab{display:none}}
+  .askfab.hide{opacity:0;pointer-events:none;transform:translateY(8px)}
 </style>
 </head>
 <body>
@@ -270,7 +352,7 @@
 <div class="wrap">
   <header>
     <div class="mark"><svg width="20" height="20" viewBox="0 0 64 64" aria-hidden="true" style="vertical-align:-3px;margin-right:9px"><rect x="6.5" y="6.5" width="51" height="51" rx="13" fill="none" stroke="currentColor" stroke-width="4"/><rect x="17" y="23" width="23" height="4" rx="2" fill="currentColor"/><rect x="17" y="32" width="30" height="4" rx="2" fill="currentColor"/><rect x="17" y="41" width="16" height="4" rx="2" fill="currentColor"/><circle cx="45" cy="45" r="5.5" fill="#D93A1E"/></svg>Mise Ledger</div>
-    <nav><a href="#system">System</a><a href="#walk">The walk</a><a href="#price">Start</a><a href="#faq">FAQ</a><a href="https://app.miseledger.com" style="margin-left:26px">Sign in</a><a class="navcta" href="mailto:hello@miseledger.com?subject=Pilot">Request a pilot</a></nav>
+    <nav><a href="#system">System</a><a href="#who">Who it is for</a><a href="#price">Pricing</a><a href="#faq">FAQ</a><a href="https://app.miseledger.com" style="margin-left:26px">Sign in</a><a class="navcta" href="#pilot">Request a pilot</a></nav>
   </header>
 </div>
 
@@ -282,7 +364,7 @@
       <p class="lede">The week plan, the pantry that knows a bag is five pounds, the temperature log with a corrective action, and the notebook that replaces the paper manual.</p>
       <div class="for">Built inside a working teaching kitchen</div>
       <div class="actions">
-        <a class="btn" href="#price">How to start</a>
+        <a class="btn" href="#pilot">Request a pilot</a>
         <a class="link" href="#system">See the system</a>
       </div>
     </div>
@@ -292,11 +374,36 @@
 
 <div class="band">
   <div class="wrap"><div class="in">
-    <div class="cell"><div class="val">6<em>h</em></div><div class="lab"><b>Hours back</b>every week, to the instructor</div></div>
-    <div class="cell"><div class="val">15</div><div class="lab"><b>Chapters</b>watched before the first shift</div></div>
+    <div class="cell"><div class="val">6<em>h</em></div><div class="lab"><b>Hours back a week*</b>to the instructor, on paperwork</div></div>
+    <div class="cell"><div class="val">15</div><div class="lab"><b>Training chapters</b>watched before a TA's first shift</div></div>
     <div class="cell"><div class="val">158</div><div class="lab"><b>Ounces</b>two bags, the pantry does the math</div></div>
-    <div class="cell"><div class="val"><em>0</em></div><div class="lab"><b>Bought twice</b>the list checks the shelf</div></div>
+    <div class="cell"><div class="val">1</div><div class="lab"><b>Shopping list</b>checked against the shelf before anyone buys</div></div>
+    <div class="note">* Instructor's own estimate in the founding lab. Your pilot measures yours.</div>
   </div></div>
+</div>
+
+<div class="wrap">
+  <section class="pad" id="before">
+    <div class="head"><h2>One Thursday, before and after</h2><span>Same lab, same week</span></div>
+    <div class="ba">
+      <div class="before">
+        <h3>On paper</h3>
+        <div class="row"><b>Shopping</b><span>A list from memory. The flour on the shelf gets bought again.</span></div>
+        <div class="row"><b>Temperatures</b><span>A clipboard by the cooler. A miss is noticed at the inspection.</span></div>
+        <div class="row"><b>TAs</b><span>The same forty things explained again every semester.</span></div>
+        <div class="row"><b>Notebooks</b><span>A stack of paper graded on a weekend.</span></div>
+        <div class="row"><b>The audit</b><span>Binders, receipts and a week of looking.</span></div>
+      </div>
+      <div class="after">
+        <h3>On the ledger</h3>
+        <div class="row"><b>Shopping</b><span>The recipe builds the list; what the pantry covers is crossed out.</span></div>
+        <div class="row"><b>Temperatures</b><span>Out of range asks for a corrective action before it saves.</span></div>
+        <div class="row"><b>TAs</b><span>Fifteen chapters and a checkpoint, signed off with a date.</span></div>
+        <div class="row"><b>Notebooks</b><span>Submitted from a phone, graded on five criteria, exported.</span></div>
+        <div class="row"><b>The audit</b><span>An append-only log and one export.</span></div>
+      </div>
+    </div>
+  </section>
 </div>
 
 <div class="inside" id="system">
@@ -401,7 +508,17 @@
 </section>
 
 <div class="wrap">
-  <section class="pad" id="why">
+  <section class="pad" id="who">
+    <div class="head"><h2>Who it is for</h2><span>Four people, one record</span></div>
+    <div class="roles">
+      <div class="role"><div class="who">Instructor</div><h3>The week is planned before you walk in.</h3><p>Briefing, station sheets, the student message and the grocery list come from the curriculum, not from Sunday night.</p></div>
+      <div class="role"><div class="who">Teaching assistant</div><h3>Knows the kitchen before the first shift.</h3><p>A training tour with checkpoints, a QR on every supply bin and counts that say who did them.</p></div>
+      <div class="role"><div class="who">Program director</div><h3>Evidence without a binder.</h3><p>ServSafe results, attendance, competencies and food cost per section, ready for an ACEND visit or a budget review.</p></div>
+      <div class="role"><div class="who">Campus dining</div><h3>The same ledger, at volume.</h3><p>Receiving that can reject at the door, lots first-expired-first-out, temperature logs and waste by location.</p></div>
+    </div>
+  </section>
+
+  <section class="pad" id="why" style="padding-top:0">
     <div class="quote">
       <div>
         <blockquote>“I stopped grading paper and started grading work.”</blockquote>
@@ -415,22 +532,40 @@
   </section>
 
   <section class="pad" id="price" style="padding-top:0">
-    <div class="head"><h2>Two ways to start</h2><span>For a program, or for a funder</span></div>
+    <div class="head"><h2>Three ways to start</h2><span>Pilot first, then decide</span></div>
     <div class="tiers">
       <article class="tier">
-        <div class="tier-tag">For a program</div>
+        <div class="tier-tag">Step one</div>
         <h3>Pilot a section</h3>
-        <p>One semester, one section, everything included: week plan, pantry, shopping list, notebooks, exams, attendance, supplies and the TA tour. Onboarding is one hour with the instructor.</p>
-        <div class="tier-foot"><span class="tier-price">Price on request</span><span class="tier-note">Quoted for the size of the program</span></div>
+        <p>One semester, one section, up to 30 students. Everything is on: week plan, pantry, shopping list, notebooks, exams, attendance, supplies and the TA tour.</p>
+        <ul><li>One-hour onboarding with the instructor</li><li>Your data exported at the end, always</li><li>Renewal is a decision, not a default</li></ul>
+        <div class="tier-foot"><span class="tier-price">$2,500<small>/ semester</small></span><span class="tier-note">Below most direct-purchase limits</span></div>
+      </article>
+      <article class="tier">
+        <div class="tier-tag">A program</div>
+        <h3>Every section</h3>
+        <p>Up to five sections and 150 students, with shared curriculum and decks across sections and a named support contact.</p>
+        <ul><li>48-hour support response</li><li>Data agreement (FERPA) signed</li><li>Review before each semester</li></ul>
+        <div class="tier-foot"><span class="tier-price">$8,000<small>/ year</small></span><span class="tier-note">Institution-wide: quoted</span></div>
       </article>
       <article class="tier dark">
-        <div class="tier-tag">For a funder</div>
+        <div class="tier-tag">A funder</div>
         <h3>Sponsor a cohort</h3>
         <p>$12,000 funds one year: development, the fifteen training chapters, content support and hosting. The department uses Mise Ledger at no license cost during the funded year.</p>
+        <ul><li>Quarterly report to the funder</li><li>Named in the program</li><li>Open to foundations and alumni</li></ul>
         <div class="tier-foot"><span class="tier-price">$12,000<small>/ year</small></span><span class="tier-note">Reportable in quarters</span></div>
       </article>
     </div>
     <div class="pledge" style="margin-top:46px">If, at the end of the pilot semester, the instructor cannot name <em>three tasks she stopped doing by hand</em>, it is not renewed.</div>
+  </section>
+
+  <section class="pad" id="trust" style="padding-top:0">
+    <div class="trust">
+      <div><b>FERPA-ready</b><span>Notebooks, grades and attendance treated as education records, with a data agreement.</span></div>
+      <div><b>Append-only audit log</b><span>Who changed what, when. Nothing is edited out of the record.</span></div>
+      <div><b>One institution, one wall</b><span>Data separation enforced on the server and tested on every change.</span></div>
+      <div><b>Accessible by design</b><span>Keyboard, contrast and screen-reader checks on every screen; VPAT on request.</span></div>
+    </div>
   </section>
 
   <section class="pad faq" id="faq" style="padding-top:0">
@@ -441,19 +576,33 @@
     <div class="q"><h4>What if it does not work for us?</h4><p>You keep the export of your data and you stop. No lock-in, no long contract — the pilot is one semester.</p></div>
   </section>
 
+</div>
+
+<div class="cta" id="pilot">
+  <div class="wrap">
+    <h2>Bring your lab <em>on the ledger.</em></h2>
+    <p class="sub">A 45-minute walkthrough, on your kitchen, with your week. Tell us a little and we answer within one business day.</p>
+    <form class="pform" id="pilotForm" novalidate>
+      <label>Name<input name="name" autocomplete="name" required/></label>
+      <label>Work email<input name="email" type="email" autocomplete="email" required/></label>
+      <label>Role<select name="role"><option>Instructor</option><option>Program director</option><option>Lab or kitchen manager</option><option>Campus dining</option><option>Funder</option><option>Other</option></select></label>
+      <label>Institution<input name="institution" autocomplete="organization" required/></label>
+      <label>Lab sections<input name="sections" type="number" min="1" inputmode="numeric" placeholder="e.g. 2"/></label>
+      <label>Students per semester<input name="students" type="number" min="1" inputmode="numeric" placeholder="e.g. 48"/></label>
+      <label class="full">What should the pilot fix first?<textarea name="note" rows="3" placeholder="Shopping, temperatures, TA training, notebooks, the audit…"></textarea></label>
+      <button type="submit">Request a pilot</button>
+      <div class="msg" id="pilotMsg" role="status" aria-live="polite"></div>
+    </form>
+    <p class="alt">Prefer plain email? <a href="mailto:hello@miseledger.com?subject=Pilot">hello@miseledger.com</a></p>
+  </div>
+</div>
+
+<div class="wrap">
   <footer>
     <div>Mise Ledger · Kyvex Technology LLC · Milwaukee</div>
     <div><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/security.html">Security</a></div>
     <div>Teaching kitchens · residence halls · campus dining</div>
   </footer>
-</div>
-
-<div class="cta">
-  <div class="wrap">
-    <h2>Bring your lab <em>on the ledger.</em></h2>
-    <p class="sub">A 45-minute walkthrough, on your kitchen, with your week.</p>
-    <a class="btn" href="mailto:hello@miseledger.com?subject=Pilot">hello@miseledger.com</a>
-  </div>
 </div>
 
 <script>
@@ -487,7 +636,7 @@
   setStep(0);
 
   // entrada suave: cada bloque aparece una sola vez
-  var revealSel=['.hero-copy','.shot','.band .in > div','.inside-head','.window','.detail','.walktxt','.walkphoto','section .head','.quote','.tier','.faq .q','.cta h2','.cta .sub','.cta .btn','.modules'];
+  var revealSel=['.hero-copy','.shot','.band .in > div','.inside-head','.window','.detail','.walktxt','.walkphoto','section .head','.quote','.tier','.faq .q','.cta h2','.cta .sub','.pform','.modules','.ba','.role','.trust'];
   var targets=[];
   revealSel.forEach(function(sel){ [].slice.call(document.querySelectorAll(sel)).forEach(function(el){ targets.push(el); }); });
   if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
@@ -534,6 +683,26 @@
   }, { threshold: 0.35 }).observe(v);
 })();
 </script>
-<a class="askfab" href="mailto:hello@miseledger.com?subject=Pilot%20question"><i></i>Ask about a pilot</a>
+<a class="askfab" href="#pilot"><i></i>Ask about a pilot</a>
+<script>
+/* No lead backend: the form composes a structured email the visitor sends from
+   their own client, so nothing is stored by the site. */
+(function(){
+  var f=document.getElementById('pilotForm'), m=document.getElementById('pilotMsg');
+  if(!f) return;
+  var fab=document.querySelector('.askfab'), cta=document.getElementById('pilot');
+  if(fab && cta && 'IntersectionObserver' in window){ new IntersectionObserver(function(es){ fab.classList.toggle('hide', es[0].isIntersecting); },{threshold:.1}).observe(cta); }
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var d={}; [].slice.call(f.elements).forEach(function(el){ if(el.name) d[el.name]=(el.value||'').trim(); });
+    var miss=[]; if(!d.name) miss.push('name'); if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)) miss.push('a valid email'); if(!d.institution) miss.push('institution');
+    if(miss.length){ m.textContent='Please add '+miss.join(', ')+'.'; var first=f.querySelector(':invalid')||f.elements[miss[0]==='name'?'name':miss[0]==='institution'?'institution':'email']; if(first) first.focus(); return; }
+    var body=['Pilot request','','Name: '+d.name,'Email: '+d.email,'Role: '+d.role,'Institution: '+d.institution,'Lab sections: '+(d.sections||'-'),'Students per semester: '+(d.students||'-'),'','Fix first:',d.note||'-'].join('\n');
+    var subj='Pilot request: '+d.institution;
+    window.location.href='mailto:hello@miseledger.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+    m.textContent='Your email app should open with the request filled in. If it does not, write to hello@miseledger.com.';
+  });
+})();
+</script>
 </body>
 </html>
