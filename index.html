@@ -47,6 +47,56 @@
   .walkphoto .ph{position:absolute;inset:0;background-position:center 30%;background-size:cover;background-repeat:no-repeat;opacity:0;transition:opacity .7s ease;z-index:1;filter:saturate(.85) contrast(1.04)}
   .walkphoto .ph.on{opacity:1}
   .walkphoto .tag{z-index:3}
+
+  /* ── Motion pass: a live ledger card on the hero, count-up stats, before/after flip ── */
+  .shot{overflow:hidden}
+  .shot .kb{position:absolute;inset:-4%;background:inherit;background-size:cover;animation:kb 26s ease-in-out infinite alternate;z-index:0}
+  @keyframes kb{from{transform:scale(1) translate(0,0)}to{transform:scale(1.08) translate(-1.5%,-1%)}}
+  .ledger{position:absolute;right:22px;top:22px;z-index:3;width:min(330px,calc(100% - 44px));background:rgba(255,255,255,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(14,14,12,.08);box-shadow:0 24px 60px -24px rgba(14,14,12,.55);font-size:12.5px;color:var(--ink);animation:lgIn .8s cubic-bezier(.22,.7,.2,1) .4s both}
+  @keyframes lgIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+  .ledger .lh{display:flex;justify-content:space-between;align-items:center;padding:12px 14px 10px;border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey)}
+  .ledger .lh b{color:var(--ink);font-weight:600}
+  .ledger .lh .dot{width:7px;height:7px;border-radius:50%;background:#16a34a;display:inline-block;margin-right:6px;box-shadow:0 0 0 0 rgba(22,163,74,.5);animation:pulse 1.8s infinite}
+  @keyframes pulse{70%{box-shadow:0 0 0 7px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
+  .ledger ul{list-style:none;margin:0;padding:4px 0}
+  .ledger li{display:grid;grid-template-columns:18px 1fr auto;gap:10px;align-items:center;padding:7px 14px;transition:opacity .4s ease,background .4s ease}
+  .ledger li .bx{width:14px;height:14px;border:1.5px solid #b9b4aa;border-radius:3px;display:grid;place-items:center;transition:all .3s ease}
+  .ledger li .bx svg{width:10px;height:10px;stroke:#fff;stroke-width:3;fill:none;stroke-dasharray:14;stroke-dashoffset:14;transition:stroke-dashoffset .35s ease .1s}
+  .ledger li .nm{position:relative;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;justify-self:start;max-width:100%}
+  .ledger li .nm::after{content:"";position:absolute;left:0;top:52%;height:1.5px;width:0;background:var(--grey);transition:width .45s ease}
+  .ledger li .q{font-family:var(--mono);font-size:11px;color:var(--grey);font-variant-numeric:tabular-nums}
+  .ledger li.shelf{opacity:.5}
+  .ledger li.shelf .bx{background:var(--grey);border-color:var(--grey)}
+  .ledger li.shelf .bx svg,.ledger li.buy .bx svg{stroke-dashoffset:0}
+  .ledger li.shelf .nm::after{width:100%}
+  .ledger li.shelf .q::before{content:"on shelf · "}
+  .ledger li.buy .bx{background:var(--red);border-color:var(--red)}
+  .ledger li.buy{background:rgba(217,58,30,.05)}
+  .ledger .lf{display:flex;justify-content:space-between;align-items:baseline;padding:11px 14px 12px;border-top:1px solid var(--rule)}
+  .ledger .lf small{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey)}
+  .ledger .lf strong{font-size:20px;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+  .ledger .lf em{font-family:var(--serif);color:#15803d;font-size:14px;margin-left:8px;opacity:0;transition:opacity .5s ease}
+  .ledger .lf em.on{opacity:1}
+  .ledger .temp{display:flex;gap:10px;align-items:center;padding:9px 14px;border-top:1px dashed var(--rule);font-family:var(--mono);font-size:10.5px;color:var(--grey);opacity:0;transform:translateY(6px);transition:all .45s ease}
+  .ledger .temp.on{opacity:1;transform:none}
+  .ledger .temp b{color:#15803d;font-weight:600}
+  .band .val [data-count]{display:inline-block;min-width:1ch}
+  .baswitch{display:inline-flex;border:1px solid var(--rule);margin:0 0 18px;background:#fff}
+  .baswitch button{all:unset;cursor:pointer;padding:10px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);transition:background .25s ease,color .25s ease}
+  .baswitch button[aria-pressed="true"]{background:var(--ink);color:#fff}
+  .baswitch button:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+  .ba > div{transition:opacity .45s ease,filter .45s ease}
+  .ba.show-before .after,.ba.show-after .before{opacity:.38;filter:grayscale(1)}
+  .ba .after .row{transition:transform .5s cubic-bezier(.22,.7,.2,1),opacity .5s ease}
+  .ba.show-after .after .row{animation:rowIn .5s cubic-bezier(.22,.7,.2,1) both}
+  .ba.show-after .after .row:nth-child(3){animation-delay:.08s}.ba.show-after .after .row:nth-child(4){animation-delay:.16s}.ba.show-after .after .row:nth-child(5){animation-delay:.24s}.ba.show-after .after .row:nth-child(6){animation-delay:.32s}
+  @keyframes rowIn{from{opacity:0;transform:translateX(10px)}to{opacity:1;transform:none}}
+  .btn,.tier,nav .navcta{transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -12px rgba(14,14,12,.6)}
+  .tier:hover{transform:translateY(-3px);box-shadow:0 18px 40px -26px rgba(14,14,12,.45);position:relative;z-index:1}
+  @media (max-width:720px){.ledger{right:12px;top:auto;bottom:12px;width:calc(100% - 24px);font-size:12px}.ledger li{padding:5px 12px}.ledger .temp{display:none}.shot .cap{display:none}}
+  @media (max-width:420px){.ledger li:nth-child(n+4){display:none}}
+  @media (prefers-reduced-motion: reduce){.shot .kb,.ledger,.ledger .lh .dot{animation:none}.ba.show-after .after .row{animation:none}.btn:hover,.tier:hover{transform:none}}
   body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
   .wrap{max-width:1240px;margin:0 auto;padding:0 34px}
   a{color:inherit;text-decoration:none}
@@ -200,7 +250,7 @@
   .tier.dark .tier-price small{color:#B6B0A5}
   .tier-note{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey)}
   .tier.dark .tier-note{color:#8C8579}
-  .band .note{grid-column:1/-1;background:var(--ink);padding:0 32px 18px;font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:#6E6A63}
+  .band .note{grid-column:1/-1;background:var(--ink);padding:0 32px 18px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#A8A399}
   /* before / after */
   .ba{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule)}
   .ba > div{padding:30px}
@@ -368,15 +418,28 @@
         <a class="link" href="#system">See the system</a>
       </div>
     </div>
-    <div class="shot"><span class="cap">Teaching kitchen · service line</span></div>
+    <div class="shot"><div class="kb" aria-hidden="true"></div>
+      <div class="ledger" id="ledger" role="img" aria-label="Example: the Week 3 shopping list checks each ingredient against the pantry, crosses out what is already on the shelf, and logs a cooler temperature.">
+        <div class="lh" aria-hidden="true"><span><span class="dot"></span><b>Week 3</b> · shopping list</span><span id="lgClock">10:41</span></div>
+        <ul aria-hidden="true">
+          <li data-s="shelf"><span class="bx"><svg viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3"/></svg></span><span class="nm">All-purpose flour</span><span class="q">2.4 kg</span></li>
+          <li data-s="buy"><span class="bx"><svg viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3"/></svg></span><span class="nm">Broccoli crowns</span><span class="q">1.8 kg</span></li>
+          <li data-s="shelf"><span class="bx"><svg viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3"/></svg></span><span class="nm">Olive oil</span><span class="q">750 ml</span></li>
+          <li data-s="buy"><span class="bx"><svg viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3"/></svg></span><span class="nm">Black beans, dry</span><span class="q">1.2 kg</span></li>
+          <li data-s="shelf"><span class="bx"><svg viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3"/></svg></span><span class="nm">Kosher salt</span><span class="q">300 g</span></li>
+        </ul>
+        <div class="lf" aria-hidden="true"><small>To buy</small><span><strong id="lgTotal">$86.40</strong><em id="lgSaved">$39.10 already on the shelf</em></span></div>
+        <div class="temp" id="lgTemp" aria-hidden="true">Walk-in cooler · <b>38°F</b> · logged by TA</div>
+      </div>
+      <span class="cap">Teaching kitchen · service line</span></div>
   </section>
 </div>
 
 <div class="band">
   <div class="wrap"><div class="in">
-    <div class="cell"><div class="val">6<em>h</em></div><div class="lab"><b>Hours back a week*</b>to the instructor, on paperwork</div></div>
-    <div class="cell"><div class="val">15</div><div class="lab"><b>Training chapters</b>watched before a TA's first shift</div></div>
-    <div class="cell"><div class="val">158</div><div class="lab"><b>Ounces</b>two bags, the pantry does the math</div></div>
+    <div class="cell"><div class="val"><span data-count="6">6</span><em>h</em></div><div class="lab"><b>Hours back a week*</b>to the instructor, on paperwork</div></div>
+    <div class="cell"><div class="val"><span data-count="15">15</span></div><div class="lab"><b>Training chapters</b>watched before a TA's first shift</div></div>
+    <div class="cell"><div class="val"><span data-count="158">158</span></div><div class="lab"><b>Ounces</b>two bags, the pantry does the math</div></div>
     <div class="cell"><div class="val">1</div><div class="lab"><b>Shopping list</b>checked against the shelf before anyone buys</div></div>
     <div class="note">* Instructor's own estimate in the founding lab. Your pilot measures yours.</div>
   </div></div>
@@ -385,7 +448,8 @@
 <div class="wrap">
   <section class="pad" id="before">
     <div class="head"><h2>One Thursday, before and after</h2><span>Same lab, same week</span></div>
-    <div class="ba">
+    <div class="baswitch" role="group" aria-label="Compare"><button type="button" data-ba="before" aria-pressed="false">On paper</button><button type="button" data-ba="after" aria-pressed="false">On the ledger</button><button type="button" data-ba="both" aria-pressed="true">Side by side</button></div>
+    <div class="ba" id="ba">
       <div class="before">
         <h3>On paper</h3>
         <div class="row"><b>Shopping</b><span>A list from memory. The flour on the shelf gets bought again.</span></div>
@@ -702,6 +766,73 @@
     window.location.href='mailto:hello@miseledger.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
     m.textContent='Your email app should open with the request filled in. If it does not, write to hello@miseledger.com.';
   });
+})();
+</script>
+<script>
+/* Motion: everything below is decoration over content that is already readable
+   without it. With prefers-reduced-motion the final state is shown and nothing loops. */
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // 1 · hero ledger: tick the list, cross out what the pantry covers, count the total down
+  var lg = document.getElementById('ledger');
+  if (lg) {
+    var items = [].slice.call(lg.querySelectorAll('li'));
+    var totalEl = document.getElementById('lgTotal'), saved = document.getElementById('lgSaved'), temp = document.getElementById('lgTemp'), clock = document.getElementById('lgClock');
+    var FULL = 86.40, FINAL = 47.30;
+    var money = function(v){ return '$' + v.toFixed(2); };
+    var finalState = function(){ items.forEach(function(li){ li.className = li.dataset.s; }); totalEl.textContent = money(FINAL); saved.classList.add('on'); temp.classList.add('on'); };
+    if (reduce) { finalState(); }
+    else {
+      var run = function(){
+        items.forEach(function(li){ li.className = ''; }); saved.classList.remove('on'); temp.classList.remove('on');
+        totalEl.textContent = money(FULL); clock.textContent = '10:41';
+        var cur = FULL, shelfCost = [18.20, 0, 12.40, 0, 8.50], t = 900;
+        items.forEach(function(li, i){
+          setTimeout(function(){
+            li.className = li.dataset.s;
+            if (shelfCost[i]) { var from = cur, to = cur - shelfCost[i], st = performance.now();
+              (function step(now){ var p = Math.min(1, (now - st) / 500); totalEl.textContent = money(from + (to - from) * p); if (p < 1) requestAnimationFrame(step); })(st);
+              cur = to; }
+          }, t); t += 750;
+        });
+        setTimeout(function(){ saved.classList.add('on'); }, t);
+        setTimeout(function(){ temp.classList.add('on'); clock.textContent = '10:42'; }, t + 700);
+      };
+      var timer = null, visible = true;
+      var loop = function(){ run(); timer = setTimeout(function(){ if (visible) loop(); else timer = null; }, 9500); };
+      if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ visible = es[0].isIntersecting; if (visible && !timer) loop(); }, { threshold: .2 }).observe(lg);
+      else loop();
+    }
+  }
+  // 2 · stats count up once when the band scrolls in
+  var nums = [].slice.call(document.querySelectorAll('[data-count]'));
+  if (!reduce && nums.length && 'IntersectionObserver' in window) {
+    nums.forEach(function(n){ n.textContent = '0'; });
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if (!e.isIntersecting) return; io.unobserve(e.target);
+        var el = e.target, end = +el.dataset.count, st = performance.now(), d = 1100 + Math.min(end, 200) * 3;
+        (function step(now){ var p = Math.min(1, (now - st) / d), k = 1 - Math.pow(1 - p, 3); el.textContent = Math.round(end * k); if (p < 1) requestAnimationFrame(step); })(st);
+      });
+    }, { threshold: .6 });
+    nums.forEach(function(n){ io.observe(n); });
+  }
+  // 3 · before/after switch, with one automatic flip the first time it is seen
+  var ba = document.getElementById('ba'), btns = [].slice.call(document.querySelectorAll('.baswitch button'));
+  if (ba && btns.length) {
+    var set = function(mode){ ba.classList.remove('show-before', 'show-after'); if (mode !== 'both') ba.classList.add('show-' + mode); btns.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.ba === mode ? 'true' : 'false'); }); };
+    var touched = false;
+    btns.forEach(function(b){ b.addEventListener('click', function(){ touched = true; set(b.dataset.ba); }); });
+    if (!reduce && 'IntersectionObserver' in window) {
+      var seen = new IntersectionObserver(function(es){
+        if (!es[0].isIntersecting) return; seen.disconnect();
+        set('before');
+        setTimeout(function(){ if (!touched) set('after'); }, 1600);
+        setTimeout(function(){ if (!touched) set('both'); }, 4200);
+      }, { threshold: .45 });
+      seen.observe(ba);
+    }
+  }
 })();
 </script>
 </body>
