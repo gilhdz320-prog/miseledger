@@ -86,7 +86,8 @@
   .baswitch button[aria-pressed="true"]{background:var(--ink);color:#fff}
   .baswitch button:focus-visible{outline:2px solid var(--red);outline-offset:2px}
   .ba > div{transition:opacity .45s ease,filter .45s ease}
-  .ba.show-before .after,.ba.show-after .before{opacity:.38;filter:grayscale(1)}
+  .ba.show-before .after,.ba.show-after .before{filter:grayscale(1);background:#FBFAF8}
+  .ba.show-before .after *,.ba.show-after .before *{color:#67635B!important;border-color:#EEEBE5!important}
   .ba .after .row{transition:transform .5s cubic-bezier(.22,.7,.2,1),opacity .5s ease}
   .ba.show-after .after .row{animation:rowIn .5s cubic-bezier(.22,.7,.2,1) both}
   .ba.show-after .after .row:nth-child(3){animation-delay:.08s}.ba.show-after .after .row:nth-child(4){animation-delay:.16s}.ba.show-after .after .row:nth-child(5){animation-delay:.24s}.ba.show-after .after .row:nth-child(6){animation-delay:.32s}
@@ -171,7 +172,7 @@
   .line{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid #26231F;font-size:11.5px}
   .line:last-child{border-bottom:0}
   .line b{font-weight:600}
-  .line .x{opacity:.38;text-decoration:line-through}
+  .line .x{opacity:1;color:#8E8A83;text-decoration:line-through}
   .line span.mut{display:block;font-size:9px;color:#8C8579;margin-top:2px}
   .skill{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:11px;padding:6px 0;border-bottom:1px solid #26231F}
   .skill:last-child{border-bottom:0}
@@ -256,7 +257,7 @@
   .ba > div{padding:30px}
   .ba .after{background:var(--soft);border-left:1px solid var(--rule)}
   .ba h3{margin:0 0 14px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);font-weight:500}
-  .ba .after h3{color:var(--red)}
+  .ba .after h3{color:#B42F17}
   .ba .row{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:11px 0;border-top:1px solid var(--rule);font-size:14px;line-height:1.5}
   .ba .row b{font-weight:600;font-size:12px}
   .ba .before .row span{color:var(--grey)}
@@ -395,6 +396,103 @@
   .askfab i{width:7px;height:7px;border-radius:999px;background:#5BD08A;display:inline-block}
   @media (max-width:640px){.askfab{display:none}}
   .askfab.hide{opacity:0;pointer-events:none;transform:translateY(8px)}
+
+/* ===== v3: frame, chapters, students, footer, spacing ===== */
+.filmhead h2{font:600 clamp(28px,3.4vw,44px)/1.03 var(--sans);letter-spacing:-.035em;margin:.38em 0 .45em}
+.filmhead h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--red)}
+#film{padding-bottom:64px}
+#walk{padding-top:72px}
+.walkphoto::after{background:rgba(14,14,12,.06)}
+.browser{border:1px solid #D9D5CC;border-radius:14px;overflow:hidden;background:#0e0e0c;box-shadow:0 1px 0 rgba(14,14,12,.04),0 40px 90px -30px rgba(14,14,12,.35)}
+.browser .bbar{display:flex;align-items:center;gap:14px;height:42px;padding:0 16px;background:#F4F2EE;border-bottom:1px solid #E2DED6}
+.browser .dots{display:flex;gap:7px}.browser .dots i{width:11px;height:11px;border-radius:50%;background:#D5D0C7}
+.browser .url{flex:1;max-width:420px;margin:0 auto;height:26px;border-radius:7px;background:#fff;border:1px solid #E2DED6;display:flex;align-items:center;justify-content:center;gap:7px;font:500 12px/1 var(--sans);color:#4A473F}
+.browser .url svg{width:11px;height:11px}
+.browser .live2{font:600 9.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#15803d;display:flex;align-items:center;gap:6px}
+.browser .live2::before{content:"";width:6px;height:6px;border-radius:50%;background:#16a34a;box-shadow:0 0 0 3px rgba(22,163,74,.18)}
+.filmwrap{border-radius:0;box-shadow:none}
+.browser .filmcap{display:none}
+.chapters{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:22px;border-top:1px solid var(--rule)}
+.chapters button{all:unset;box-sizing:border-box;cursor:pointer;padding:18px 18px 4px 0;position:relative}
+.chapters button+button{padding-left:18px;border-left:1px solid var(--rule)}
+.chapters button::before{content:"";position:absolute;left:0;right:0;top:-1px;height:2px;background:var(--ink);transform:scaleX(var(--p,0));transform-origin:0 50%}
+.chapters button+button::before{left:0}
+.chapters .n{font:600 10.5px/1 var(--mono);letter-spacing:.16em;color:var(--red)}
+.chapters b{display:block;margin-top:10px;font-size:15px;letter-spacing:-.01em}
+.chapters span.d{display:block;margin-top:6px;font-size:13px;line-height:1.5;color:var(--grey)}
+.chapters button[aria-current="true"] b{color:var(--red)}
+.chapters button:hover b{text-decoration:underline;text-underline-offset:3px}
+/* students */
+#students{background:var(--soft);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:96px 0}
+.stgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:72px;align-items:center}
+.stgrid .kicker{color:var(--red)}
+.stgrid h2{margin:14px 0 0;font-size:clamp(30px,3.6vw,50px);line-height:1.02;letter-spacing:-.035em;font-weight:600}
+.stgrid h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--red)}
+.stgrid .lede{margin:20px 0 0;font-size:16px;line-height:1.65;color:#3A3833;max-width:520px}
+.vs{display:grid;grid-template-columns:1fr 1fr;margin-top:34px;border:1px solid var(--rule);background:#fff}
+.vs>div{padding:22px 22px 20px}
+.vs>div+div{border-left:1px solid var(--rule);background:var(--ink);color:#F3EFE6}
+.vs small{font:600 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--grey)}
+.vs>div+div small{color:#E8836F}
+.vs .pr{display:block;margin-top:12px;font-size:34px;font-weight:700;letter-spacing:-.03em}
+.vs .pr s{color:#9C978D;text-decoration-thickness:2px}
+.vs ul{margin:14px 0 0;padding:0;list-style:none;font-size:13.5px;line-height:1.5}
+.vs li{padding:6px 0;border-top:1px solid var(--rule);color:#4A473F}
+.vs>div+div li{border-color:#2A2925;color:#D9D4CA}
+.stnote{margin-top:14px;font-size:12.5px;line-height:1.55;color:var(--grey);max-width:560px}
+.phone{width:300px;margin:0 auto;border-radius:44px;background:#0e0e0c;padding:12px;box-shadow:0 50px 90px -40px rgba(14,14,12,.55),inset 0 0 0 1.5px #2A2925}
+.phone .scr{border-radius:33px;background:#fff;overflow:hidden;height:560px;position:relative}
+.phone .notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:92px;height:26px;border-radius:14px;background:#0e0e0c;z-index:3}
+.phone .st{display:flex;justify-content:space-between;padding:14px 26px 0;font:600 12px/1 var(--sans)}
+.phone .ap{padding:30px 18px 0}
+.phone .ap .wk{font:600 9.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--red)}
+.phone .ap h4{margin:8px 0 0;font-size:19px;line-height:1.15;letter-spacing:-.02em}
+.phone .ph2{margin-top:14px;height:132px;border-radius:12px;background:#ddd center/cover no-repeat}
+.phone .row2{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #EEECE7;font-size:12.5px}
+.phone .row2 i{font-style:normal;font:600 10px/1 var(--mono);letter-spacing:.1em;color:#15803d}
+.phone .row2 i.t{color:var(--ink);font-size:12px}
+.phone .tm{margin-top:12px;display:flex;align-items:center;justify-content:space-between;border:1px solid #EEECE7;border-radius:12px;padding:10px 12px}
+.phone .tm b{font:700 22px/1 var(--mono);letter-spacing:-.02em}
+.phone .tm span{font-size:11px;color:var(--grey)}
+.phone .sub2{margin-top:14px;display:block;text-align:center;background:var(--ink);color:#fff;border-radius:12px;padding:13px;font:600 12.5px/1 var(--sans)}
+.phone .fb{margin-top:10px;font-size:11px;color:var(--grey);text-align:center}
+/* trust link */
+.trustlink{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font:600 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;border-bottom:1.5px solid var(--red);padding-bottom:5px}
+.trustlink:hover{color:var(--red)}
+/* footer v3 */
+footer.big{display:block;border-top:1px solid var(--rule);padding:64px 0 40px;font-size:13px;color:var(--grey)}
+.fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:32px}
+.fgrid .fb1 .mark{color:var(--ink)}
+.fgrid .fb1 p{margin:14px 0 0;line-height:1.6;max-width:300px}
+.fgrid h5{margin:0 0 14px;font:600 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.fgrid nav a,.fgrid a{display:block!important;margin:0;padding:5px 0;border:0;color:var(--grey);font-size:13px;letter-spacing:0;text-transform:none;font-weight:400}
+.fgrid a:hover{color:var(--red)}
+.fbase{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:48px;padding-top:22px;border-top:1px solid var(--rule);font-size:12px}
+.fbase .ok{display:inline-flex;align-items:center;gap:8px}
+.fbase .ok::before{content:"";width:7px;height:7px;border-radius:50%;background:#16a34a}
+@media (max-width:960px){
+  .stgrid{grid-template-columns:1fr;gap:48px}
+  .fgrid{grid-template-columns:1fr 1fr;gap:28px}.fgrid .fb1{grid-column:1/-1}
+  .chapters{grid-template-columns:1fr 1fr}.chapters button:nth-child(3){padding-left:0;border-left:0}
+}
+@media (max-width:560px){
+  #students{padding:64px 0}
+  .vs{grid-template-columns:1fr}.vs>div+div{border-left:0;border-top:1px solid var(--rule)}
+  .phone{width:270px}.phone .scr{height:530px}
+  .browser .bbar{height:34px;padding:0 10px}.browser .dots i{width:8px;height:8px}.browser .live2{display:none}
+  .browser .url{font-size:10.5px;height:22px}
+  .chapters span.d{display:none}
+  .chapters button{padding:14px 10px 2px 0}.chapters button+button{padding-left:12px}
+}
+
+/* contrast pass (WCAG 1.4.3) */
+.inside .kicker{color:#A39D92}
+.win-meta,.wbig .lab,.tbl th,.tbl .sub,.window .muted,.wfacts .muted{color:#6B675F!important}
+.modules span{color:#A09A90!important}
+.browser .live2{color:#12723A}
+.stgrid .kicker{color:#B42F17}
+.vs .pr s{color:#6B675F}
+.tier.dark .tier-tag{color:#F0674B}
 </style>
 </head>
 <body>
@@ -402,7 +500,7 @@
 <div class="wrap">
   <header>
     <div class="mark"><svg width="20" height="20" viewBox="0 0 64 64" aria-hidden="true" style="vertical-align:-3px;margin-right:9px"><rect x="6.5" y="6.5" width="51" height="51" rx="13" fill="none" stroke="currentColor" stroke-width="4"/><rect x="17" y="23" width="23" height="4" rx="2" fill="currentColor"/><rect x="17" y="32" width="30" height="4" rx="2" fill="currentColor"/><rect x="17" y="41" width="16" height="4" rx="2" fill="currentColor"/><circle cx="45" cy="45" r="5.5" fill="#D93A1E"/></svg>Mise Ledger</div>
-    <nav><a href="#system">System</a><a href="#who">Who it is for</a><a href="#price">Pricing</a><a href="#faq">FAQ</a><a href="https://app.miseledger.com" style="margin-left:26px">Sign in</a><a class="navcta" href="#pilot">Request a pilot</a></nav>
+    <nav><a href="#system">System</a><a href="#who">Who it is for</a><a href="#students">Students</a><a href="#price">Pricing</a><a href="#faq">FAQ</a><a href="https://app.miseledger.com" style="margin-left:26px">Sign in</a><a class="navcta" href="#pilot">Request a pilot</a></nav>
   </header>
 </div>
 
@@ -546,6 +644,8 @@
       <h2>The product, <em>not a promise.</em></h2>
       <p>No actors, no avatars: this is the software running on the week an instructor actually teaches.</p>
     </div>
+    <div class="browser">
+      <div class="bbar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span class="url"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2.5" y="5.5" width="7" height="5" rx="1"/><path d="M4 5.5V4a2 2 0 014 0v1.5"/></svg>app.miseledger.com</span><span class="live2">Live product</span></div>
     <div class="filmwrap">
       <video id="filmVideo" poster="/film/poster.jpg" playsinline muted loop preload="metadata" controls
              aria-label="Walkthrough of Mise Ledger">
@@ -553,6 +653,13 @@
         Your browser cannot play this video. It shows the week plan, pantry, temperatures, ServSafe map and counts.
       </video>
       <span class="filmcap">Teaching kitchen · Station 1</span>
+    </div>
+    </div>
+    <div class="chapters" id="chapters" aria-label="Jump to a part of the film">
+      <button type="button" data-t="0" aria-current="true"><span class="n">00:00</span><b>Smart pantry</b><span class="d">Pack sizes, expiry and par: six items flagged before Monday.</span></button>
+      <button type="button" data-t="6"><span class="n">00:06</span><b>Recipe scaler</b><span class="d">One recipe to 48 portions, priced and checked against the shelf.</span></button>
+      <button type="button" data-t="23.6"><span class="n">00:24</span><b>Lab notebook</b><span class="d">The student writes, uploads and submits from a phone.</span></button>
+      <button type="button" data-t="29.5"><span class="n">00:30</span><b>Kitchen map</b><span class="d">A ServSafe hazard hunt on the real floor plan.</span></button>
     </div>
   </div>
 </section>
@@ -567,6 +674,42 @@
         <div class="prog"><i class="on"></i><i></i><i></i><i></i><span class="pcount" id="pcount">1 / 4</span></div>
       </div>
       <div class="walkphoto" id="walkphoto"><div class="ph" id="phA"></div><div class="ph" id="phB"></div><span class="tag" id="wtag">01</span></div>
+    </div>
+  </div>
+</section>
+
+
+<section id="students" aria-labelledby="stTitle">
+  <div class="wrap">
+    <div class="stgrid">
+      <div>
+        <div class="kicker">For students</div>
+        <h2 id="stTitle">The lab manual, <em>rewritten for the phone in their apron.</em></h2>
+        <p class="lede">Each week opens with the lesson, a captioned video and the recipe already scaled to the station. In the kitchen it runs the timers; after service the notebook goes in with photos and comes back graded on five criteria.</p>
+        <div class="vs">
+          <div><small>Printed lab manual</small><span class="pr"><s>$60–100</s></span>
+            <ul><li>Same pages for every section</li><li>No video, no timers</li><li>Graded on paper, weeks later</li></ul></div>
+          <div><small>Mise Ledger notebook</small><span class="pr">$0–20</span>
+            <ul><li>The week your instructor planned</li><li>Captioned videos and live timers</li><li>Rubric feedback in the app</li></ul></div>
+        </div>
+        <p class="stnote">Free to students when the department licenses Mise Ledger. Otherwise an access code under $25 through the campus bookstore, so the course keeps its low-cost materials designation.</p>
+      </div>
+      <div aria-hidden="true">
+        <div class="phone"><div class="scr"><span class="notch"></span>
+          <div class="st"><span>9:41</span><span>●●●</span></div>
+          <div class="ap">
+            <div class="wk">Week 4 · Station 2</div>
+            <h4>Strawberry jam with low-sugar pectin</h4>
+            <div class="ph2" style="background-image:url('img/notebook.jpg')"></div>
+            <div class="row2"><span>Read the lesson</span><i>DONE</i></div>
+            <div class="row2"><span>Watch: setting point (4 min)</span><i>DONE</i></div>
+            <div class="row2"><span>Mise en place, 12 portions</span><i class="t">8 items</i></div>
+            <div class="tm"><div><span>Boil to set</span><br><b id="phTimer">04:00</b></div><span>220°F target</span></div>
+            <span class="sub2">Submit notebook</span>
+            <div class="fb">Last week: 90% · “Great temperature log.”</div>
+          </div>
+        </div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -628,8 +771,9 @@
       <div><b>FERPA-ready</b><span>Notebooks, grades and attendance treated as education records, with a data agreement.</span></div>
       <div><b>Append-only audit log</b><span>Who changed what, when. Nothing is edited out of the record.</span></div>
       <div><b>One institution, one wall</b><span>Data separation enforced on the server and tested on every change.</span></div>
-      <div><b>Accessible by design</b><span>Keyboard, contrast and screen-reader checks on every screen; VPAT on request.</span></div>
+      <div><b>Accessible by design</b><span>WCAG 2.1 AA checks on every screen, with an Accessibility Conformance Report (VPAT 2.5).</span></div>
     </div>
+    <a class="trustlink" href="/trust">Visit the Trust Center →</a>
   </section>
 
   <section class="pad faq" id="faq" style="padding-top:0">
@@ -662,10 +806,15 @@
 </div>
 
 <div class="wrap">
-  <footer>
-    <div>Mise Ledger · Kyvex Technology LLC · Milwaukee</div>
-    <div><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/security.html">Security</a></div>
-    <div>Teaching kitchens · residence halls · campus dining</div>
+  <footer class="big">
+    <div class="fgrid">
+      <div class="fb1"><div class="mark">Mise Ledger</div><p>The operating record for teaching kitchens: the week, the pantry, the temperatures and the notebook, on one ledger.</p></div>
+      <nav aria-label="Product"><h5>Product</h5><a href="#system">The system</a><a href="#film">Product film</a><a href="#students">For students</a><a href="#price">Pricing</a></nav>
+      <nav aria-label="Who it is for"><h5>Who it is for</h5><a href="#who">Instructors</a><a href="#who">Teaching assistants</a><a href="#who">Program directors</a><a href="#who">Campus dining</a></nav>
+      <nav aria-label="Trust"><h5>Trust</h5><a href="/trust">Trust Center</a><a href="/security">Security</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav>
+      <nav aria-label="Company"><h5>Company</h5><a href="#pilot">Request a pilot</a><a href="mailto:hello@miseledger.com">hello@miseledger.com</a><a href="https://app.miseledger.com">Sign in</a></nav>
+    </div>
+    <div class="fbase"><span>© 2026 Kyvex Technology LLC, doing business as Mise Ledger · Milwaukee, Wisconsin</span><span class="ok">Hosted in the US · Your data stays with your institution</span></div>
   </footer>
 </div>
 
@@ -833,6 +982,27 @@
       seen.observe(ba);
     }
   }
+})();
+</script>
+<script>
+(function(){
+  var v=document.getElementById('filmVideo'), ch=document.getElementById('chapters'); if(!v||!ch) return;
+  var bs=[].slice.call(ch.querySelectorAll('button')), ts=bs.map(function(b){return +b.dataset.t;});
+  bs.forEach(function(b){ b.addEventListener('click',function(){ try{ v.currentTime=+b.dataset.t; }catch(e){} var pr=v.play(); if(pr&&pr.catch) pr.catch(function(){}); }); });
+  v.addEventListener('timeupdate',function(){
+    var t=v.currentTime, d=v.duration||38.3;
+    for(var k=0;k<bs.length;k++){
+      var a=ts[k], z=k+1<ts.length?ts[k+1]:d, on=t>=a&&t<z;
+      bs[k].setAttribute('aria-current', on?'true':'false');
+      bs[k].style.setProperty('--p', t>=z?1:(on?((t-a)/(z-a)).toFixed(3):0));
+    }
+  });
+})();
+(function(){
+  var el=document.getElementById('phTimer'); if(!el||window.matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window)) return;
+  var left=240, id=null;
+  function tick(){ left=left>0?left-1:240; el.textContent=('0'+Math.floor(left/60)).slice(-2)+':'+('0'+left%60).slice(-2); }
+  new IntersectionObserver(function(es){ if(es[0].isIntersecting){ if(!id) id=setInterval(tick,1000); } else { clearInterval(id); id=null; } },{threshold:.3}).observe(el);
 })();
 </script>
 </body>
